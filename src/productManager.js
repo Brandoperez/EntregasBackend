@@ -2,16 +2,17 @@ import { clear } from 'console';
 import {promises as fs} from 'fs';
 
 
-class ProductManager{ 
+export default class ProductManager{ 
     constructor(){
 
         this.products = []; 
-        this.path = './files/productos.txt';
+        this.path = './path/productos.txt';
     } 
    
     getProducts = async () =>{
         this.products = JSON.parse(await fs.readFile(this.path, 'utf-8'));
         console.log(this.products);
+        return this.products
     }
 
     addProducts = async(product) =>{
@@ -109,8 +110,8 @@ const newProducts ={
 const producto = new Product(newProducts);
 const productManager = new ProductManager();
 
-productManager.addProducts(producto)
+/*productManager.addProducts(producto)
 productManager.getProducts();
 productManager.updateProducts(1 , {title : "Heladera LG", description: "Esta es una super heladera", precio: 30000, stock : 10})
 productManager.deleteProducts()
-productManager.getProductsByID(1)
+productManager.getProductsByID(1)*/
