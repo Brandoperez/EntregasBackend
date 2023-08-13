@@ -38,14 +38,15 @@ export default class ProductManager{
     getProductsByID = async(idProducto) => {
 
         this.products = JSON.parse(await fs.readFile(this.path, 'utf-8'));
-        const productoID = this.products.find(e=>e.id === idProducto);
+        const productoID = this.products.find(e=>e.id === parseInt(idProducto));
             if(productoID){
                 console.log(productoID);
+                return productoID;
             }else{
-                console.log("No se encontró el producto")
+                console.log("No se encontro el producto");
+                return null;
             }
 
-            this.products.push(idProducto); 
 
     }
 
@@ -75,13 +76,14 @@ export default class ProductManager{
     }
 }
 class Product{
-    constructor(title, description, price, thumbnail, code, stock){
+    constructor(title, description, price, thumbnail, code, stock, categoria, ){
         this.title = title,
         this.description = description,
         this.price = price,
         this.thumbnail = thumbnail,
         this.code = code,
         this.stock = stock,
+        this.categoria = categoria,
         this.id = Product.incrementarID()
     }
         static incrementarID(){
@@ -94,21 +96,6 @@ class Product{
         }
 }
 
-
-
-
-const newProducts ={
-    title: 'Heladera LG',
-    description: 'Heladera ultima genaración', 
-    precio: 50000,
-    thumbnail: 'sample/uri/thumbnail.jpg',
-    code: '876hbjf',
-    stock: 10
-}
-
-
-const producto = new Product(newProducts);
-const productManager = new ProductManager();
 
 /*productManager.addProducts(producto)
 productManager.getProducts();
