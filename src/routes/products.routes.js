@@ -1,7 +1,7 @@
 import { Router } from "express";
 import  ProductManager  from "../controllers/productManager.js";
 
-const productManager = new ProductManager("../path/productos.txt");
+const productManager = new ProductManager("./src/models/productos.json");
 const routerProduct = Router();
 
 

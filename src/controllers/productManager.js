@@ -3,10 +3,10 @@ import {promises as fs} from 'fs';
 
 
 export default class ProductManager{ 
-    constructor(){
+    constructor(path){
 
         this.products = []; 
-        this.path = './path/productos.txt';
+        this.path = path;
     } 
    
     getProducts = async () =>{
@@ -74,7 +74,16 @@ export default class ProductManager{
         const prods = this.products.filter(prod => prod.id != id);
         await fs.writeFile(this.path, JSON.stringify(prods))
     }
+
+    static incrementarID(products){
+        const idProducto = products.map((product) => product.id);
+        let newId = 1;
+        products.length > 0 && (newId = Math.max(...idProducto) + 1);
+        return newId;
+    }
 }
+
+
 class Product{
     constructor(title, description, price, thumbnail, code, stock, categoria, ){
         this.title = title,

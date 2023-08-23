@@ -1,7 +1,7 @@
 import { Router } from "express";
-import  CardManager  from "../controllers/cardManager.js";
+import  CardManager  from "../controllers/cartManager.js";
 
-const cardManager = new CardManager('../path/card.txt');
+const cardManager = new CardManager('./src/models/cart.json','./src/models/productos.json');
 
 const routerCard = Router();
 
