@@ -1,5 +1,6 @@
 
 const socket = io();
+socket.emit("load")
 
 const form = document.getElementById('formProduct');
 

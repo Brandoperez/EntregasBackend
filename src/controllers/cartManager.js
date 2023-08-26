@@ -1,53 +1,59 @@
-import {clear} from 'console';
 import { promises as fs } from 'fs';
 
 export default class CartManager{
-    constructor(path){
+    constructor(cartPath, productsPath){
         this.carts = [];
-        this.path = path;
-        this.loadCard();
+        this.cartPath = cartPath;
+        this.productsPath = productsPath
     }
 
     newCard = async () =>{
-        const cart = {
-          id: CartManager.agregarID(),
-          products: []
-        }
-            this.cards.push(card)
-            await this.saveCard();
-            return card.id;
-    }
-
-    saveCard = async () =>{
-        await fs.writeFile(this.path, JSON.stringify(this.carts, null, 2), 'utf-8');
-    }
-    
-    loadCard = async () => {
-        const data = await fs.readFile(this.path, 'utf-8');
-        this.carts = JSON.parse(data);
+        this.carts = JSON.parse(await fs.readFile(this.cartPath, 'utf-8'));
+        const cart = {id: CartManager.agregarID(this.carts), products: []}
+            this.carts.push(cart);
+            const cartNew = JSON.stringify(this.carts);
+            await fs.writeFile(this.cartPath, cartNew);
     }
 
     getProductsByCartId = async (cartId) =>{
-        console.log("Esto viene por la cardID", cartId)
-        console.log(this.carts);
-        console.log("Parsed CardId", parseInt(cartId))
-        const cart = this.carts.find(cart => cart.id === parseInt(cartId));
+        this.carts = JSON.parse(await fs.readFile(this.cartPath, 'utf-8'));
+        const cart = this.carts.find((cart) => cart.id === parseInt(cartId));
+
             if(cart){
-                console.log("esto viene por la card",cart)
                 return cart.products;
             }else{
-                console.log("cart not fount")
                 return [];     
             }
     }
+    addProductsToCart = async (cId, pId) =>{
+        this.carts = JSON.parse(await fs.readFile(this.cartPath, 'utf-8'));
+        const cart = this.carts.find((cart) => cart.id === parseInt(cId));
 
-    static agregarID(){
-        if(this.idIncrement){
-            this.idIncrement++
-        }else{
-            this.idIncrement = 1;
+        const products = JSON.parse(await fs.readFile(this.productsPath, 'utf-8'));
+        const product = this.products.find((prod) => prod.id === parseInt(pId));
+
+        if(!product){
+            return false;
         }
-        return this.idIncrement
+
+        if(cart){
+            const productoExistente = cart.products.find((prod) => prod.id === parseInt(pId));
+                productoExistente
+                ? productoExistente.quantity++
+                : cart.products.push({id: product.id, quantity: 1});
+                const cartNew = JSON.stringify(this.carts);
+                await fs.writeFile(this.cartPath, cartNew);
+                    return true;
+        }else{
+            return false;
+        }
+    }
+
+    static agregarID(carts){
+      const ids = carts.map((cart) => cart.id);
+      let newID = 1;
+      carts.length > 0 && (newID = Math.max(...ids)+1);
+      return newID
     }
 }
 
