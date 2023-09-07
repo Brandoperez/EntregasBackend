@@ -1,16 +1,24 @@
 import  Express from "express";
 import { engine } from "express-handlebars";
 import { Server } from "socket.io";
+import mongoose from "mongoose";
+
 import ProductManager from "./controllers/productManager.js";
 import routerProduct from "./routes/products.routes.js";
-import routerCard from "./routes/card.routes.js";
+import routerCart from "./routes/carts.routes.js";
+import routerMessages from "./routes/messages.routes.js";
+
 import {__dirname} from "./path.js";
 import path from 'path';
+
 
 const app = Express();
 const PORT = 4000;
 
-const productManager = new ProductManager("./src/models/productos.json");
+mongoose.connect('mongodb+srv://brandoperezinciarte:25818340@coderbackend.gz8arqh.mongodb.net/?retryWrites=true&w=majority')
+    .then(() => console.log("BD conectada"))
+    .catch((error) => console.log("Error en conexión a mongoDB atlas: ", error));
+
 
 //SERVER
 const server = app.listen(PORT, () =>{
@@ -18,6 +26,7 @@ const server = app.listen(PORT, () =>{
 });
 
 const io = new Server(server);
+global.io = io;
 
 //MIDDLEWARES
 app.use(Express.json());
@@ -29,18 +38,14 @@ app.set('views', path.resolve(__dirname, './views'))
 // const mensaje = [];
 
 io.on("connection", (socket) => {
-    console.log("Conexion con socket.io")
+    console.log("Conexion con socket.io");
 
-    socket.on("load", async() =>{
-        const products = await productManager.getProducts();
-        socket.emit("products", products);
+    socket.on("nuevoMensaje", async (mensaje) =>{
+
+        
+        io.emit("mensajeEnviado", mensaje);
     }); 
 
-    socket.on('nuevoProducto', async (prod) => {
-        await productManager.addProducts(prod)
-        const products = await productManager.getProducts()
-        socket.emit("products", products); 
-    });
 });
 
 app.use("/static", Express.static(path.join(__dirname, "/public")));
@@ -61,4 +66,5 @@ app.get("/static/realtimeproducts", (req, res) =>{
 })
 
 app.use('/api/product', routerProduct);
-app.use('/api/card', routerCard);
+app.use('/api/cart', routerCart);
+app.use('/api/mensaje', routerMessages(io));
