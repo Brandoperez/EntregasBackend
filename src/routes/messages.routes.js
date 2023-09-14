@@ -22,8 +22,6 @@ routerMessages.post('/', async (req, res) =>{
         await newMessage.save();
 
         console.log(`Nuevo mensaje recibido - Correo: ${email}, Mensaje: ${message}`);
-
-        //req.io.emit('nuevoMensaje', newMessage);
         res.status(200).send({ respuesta: 'OK', message: 'Mensaje guardado con éxito'})
     }catch(error){
         res.status(400).send({erro: `Error al guardar el mensaje ${error}`});

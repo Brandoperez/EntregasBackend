@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import  Express from "express";
 import { engine } from "express-handlebars";
 import { Server } from "socket.io";
@@ -16,7 +17,7 @@ import path from 'path';
 const app = Express();
 const PORT = 4000;
 
-mongoose.connect('mongodb+srv://brandoperezinciarte:25818340@coderbackend.gz8arqh.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect(process.env.URL_MONGO)
     .then(() => console.log("BD conectada"))
     .catch((error) => console.log("Error en conexión a mongoDB atlas: ", error));
 
