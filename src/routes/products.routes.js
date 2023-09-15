@@ -5,10 +5,26 @@ const routerProduct = Router();
 
 
 routerProduct.get('/', async (req, res) => {
-    const {limit} = req.query;
+    const {limit = 10, page = 1, sort, query, category, status} = req.query;
 
     try{
-        const prods = await productsModel.find().limit(limit);
+
+        const opciones = {
+            limit: parseInt(limit),
+            page: parseInt(page),
+            sort: sort === 'asc' ? {price: 1} : sort === 'desc' ? {price: -1} : null
+        }
+        const filter = {}
+        if(query){
+            filter.type = query
+        }
+        if(category){
+            filter.type = category
+        }
+        if(status){
+            filter.type = status
+        }
+        const prods = await productsModel.paginate(filter, opciones);
         res.status(200).send({ resultado: 'OK', message: prods});
     }catch(error){
         res.status(400).send({ error: `Error al consultar los productos: ${error}`});

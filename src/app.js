@@ -3,6 +3,7 @@ import  Express from "express";
 import { engine } from "express-handlebars";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
+import paginate from 'mongoose-paginate-v2';
 
 import ProductManager from "./controllers/productManager.js";
 import routerProduct from "./routes/products.routes.js";
