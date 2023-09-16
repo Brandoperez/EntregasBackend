@@ -50,7 +50,7 @@ routerCart.put('/:cid', async (req, res) =>{
             await cart.save();
             res.status(200).send({ resultado: 'OK', message: "Producto actualizado correctamente"});
         }catch(error){
-            res.status(400).send({ error: `Error al actualizar el producto del carrito`});
+            res.status(400).send({ error: `Error al actualizar el producto del carrito ${error}`});
         }
 })
 routerCart.put('/:cid/products/:pid', async (req, res) => {
@@ -72,9 +72,41 @@ routerCart.put('/:cid/products/:pid', async (req, res) => {
                 res.status(404).send({ restultado: 'Not found', message: 'Producto no encontrado'});
             }
         }catch(error){
-            res.status(400).send({ error: `Error al actualizar el producto del carrito`});
+            res.status(400).send({ error: `Error al actualizar el producto del carrito ${error}`});
         }
-})
+    })
+    routerCart.delete('/:cid/products/:pid', async (req, res) =>{
+        const { cid, pid} = req.params;
+
+            try{
+                const cart = cartsModel.findById(cid);
+                if(!cart){
+                    res.status(404).send({ resultado: 'Not found', message: 'Carrito no encontrado'});
+                }
+
+                cart.products = cart.products.filter((producto) => producto.producto.toString() !== pid);
+                await cart.save();
+                res.status(200).send({ resultado: 'OK', message: "Producto eliminado con éxito"});
+            }catch(error){
+                res.status(400).send({ error: `Error al eliminar el producto del carrito ${error}`})
+            }
+    })
+
+    routerCart.delete('/:cid', async (req, res) =>{
+        const {cid} = req.params;
+            try{
+                const cart = cartsModel.findById(cid);
+                if(!cart){
+                    res.status(404).send({ resultado: 'not found', message: "Carrito no encontrado"});
+                }
+                cart.products = [];
+                await cart.save();
+
+                res.status(200).send({ resultado: 'OK', message: 'Todos los productos han sido eliminados'});
+            }catch(error){
+                res.status(400).send({error: `Error al eliminar todos los productos ${error}`});
+            }
+    })
 
 
 
