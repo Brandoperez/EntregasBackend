@@ -4,11 +4,16 @@ import { engine } from "express-handlebars";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
 import paginate from 'mongoose-paginate-v2';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
 
 import ProductManager from "./controllers/productManager.js";
 import routerProduct from "./routes/products.routes.js";
 import routerCart from "./routes/carts.routes.js";
 import routerMessages from "./routes/messages.routes.js";
+import routerUser from "./routes/users.routes.js"
+import routerSessions from "./routes/sessions.routes.js"
 import messageModel from "./models/messages.models.js";
 
 import {__dirname} from "./path.js";
@@ -37,6 +42,13 @@ app.use(Express.urlencoded({extended:true}));
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars')
 app.set('views', path.resolve(__dirname, './views'))
+app.use(session({
+    store: MongoStore.create({
+        mongoUrl: process.env.URL_MONGO,
+        mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
+        ttl: 50
+    }) //Falta aqui la sesion secreta y las coockies
+}))
 
 
 io.on("connection", (socket) => {
@@ -73,3 +85,5 @@ app.get("/static/realtimeproducts", (req, res) =>{
 app.use('/api/product', routerProduct);
 app.use('/api/cart', routerCart);
 app.use('/api/mensaje', routerMessages);
+app.use('/api/users', routerUser);
+app.use('/api/session', routerSessions);
