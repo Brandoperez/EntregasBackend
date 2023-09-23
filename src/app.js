@@ -12,8 +12,8 @@ import ProductManager from "./controllers/productManager.js";
 import routerProduct from "./routes/products.routes.js";
 import routerCart from "./routes/carts.routes.js";
 import routerMessages from "./routes/messages.routes.js";
-import routerUser from "./routes/users.routes.js"
-import routerSessions from "./routes/sessions.routes.js"
+import routerUser from "./routes/users.routes.js";
+import routerIndex from "./routes/index.routes.js";
 import messageModel from "./models/messages.models.js";
 
 import {__dirname} from "./path.js";
@@ -41,14 +41,18 @@ app.use(Express.json());
 app.use(Express.urlencoded({extended:true}));
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars')
-app.set('views', path.resolve(__dirname, './views'))
+app.set('views', path.resolve(__dirname, './views'));
+app.use(cookieParser(process.env.SIGNED_COOKIE));
 app.use(session({
     store: MongoStore.create({
         mongoUrl: process.env.URL_MONGO,
         mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
         ttl: 50
-    }) //Falta aqui la sesion secreta y las coockies
-}))
+    }),
+        secret: process.env.SESSION_SECRET,
+        resave: true,
+        saveUninitialized: true
+}));
 
 
 io.on("connection", (socket) => {
@@ -82,8 +86,11 @@ app.get("/static/realtimeproducts", (req, res) =>{
     })
 })
 
-app.use('/api/product', routerProduct);
-app.use('/api/cart', routerCart);
-app.use('/api/mensaje', routerMessages);
+
+
+
+app.use('/api/products', routerProduct);
+app.use('/api/carts', routerCart);
+app.use('/api/messages', routerMessages);
 app.use('/api/users', routerUser);
-app.use('/api/session', routerSessions);
+app.use('/api/index', routerIndex);

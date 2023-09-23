@@ -8,22 +8,22 @@
 <body>
     <h1>Registro de usuarios</h1>
 
-    <form method="post" action="/users">
+    <form method="post" action="/api/users/register">
 
         <label for="first_name">Nombre:</label>
-        <input type="text" name="first_name">
+        <input type="text" name="first_name" required> 
 
         <label for="last_name">Apellido:</label>
-        <input type="text" name="last_name">
+        <input type="text" name="last_name" required>
 
         <label for="email">Correo Electronico:</label>
-        <input type="email" name="email">
+        <input type="email" name="email" required>
 
         <label for="password">Contraseña:</label>
-        <input type="text" name="password">
+        <input type="text" name="password" required>
 
         <label for="age">Edad:</label>
-        <input type="number" name="age">
+        <input type="number" name="age" required>
 
         <button type="submit">Registrase</button>
 

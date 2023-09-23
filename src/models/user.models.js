@@ -21,7 +21,10 @@ const userSchema = new Schema({
     },
     rol: {
         type: String,
-        default: 'user'
+        enum: ['admin', 'user'],
+        default: function () {
+            return this.email === 'adminCoder@coder.com' ? 'admin' : 'usuario';
+          }
     },
     age: {
         type: Number,
