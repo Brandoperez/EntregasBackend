@@ -95,7 +95,7 @@ routerUser.get('/githubSession', passport.authenticate('github'), async (req, re
     res.status(200).send({ message: 'Sessión creada'});
 })
 routerUser.get('/logout', async (req, res) =>{
-    if(req.session.login){
+    if(req.session){
         req.session.destroy();
     }
     res.status(200).send({ resultado: 'OK', message: 'Ha finalizado la sessión'});
