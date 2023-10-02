@@ -7,6 +7,7 @@ import paginate from 'mongoose-paginate-v2';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
+import passport from 'passport';
 
 import ProductManager from "./controllers/productManager.js";
 import routerProduct from "./routes/products.routes.js";
@@ -18,6 +19,7 @@ import messageModel from "./models/messages.models.js";
 
 import {__dirname} from "./path.js";
 import path from 'path';
+import initializarPassport from './config/config.js';
 
 
 const app = Express();
@@ -47,13 +49,15 @@ app.use(session({
     store: MongoStore.create({
         mongoUrl: process.env.URL_MONGO,
         mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
-        ttl: 50
+        ttl: 60 * 60
     }),
         secret: process.env.SESSION_SECRET,
         resave: true,
         saveUninitialized: true
 }));
-
+initializarPassport();
+app.use(passport.initialize());
+app.use(passport.session());
 
 io.on("connection", (socket) => {
     console.log("Conexion con socket.io");

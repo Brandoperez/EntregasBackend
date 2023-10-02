@@ -23,7 +23,7 @@ const userSchema = new Schema({
         type: String,
         enum: ['admin', 'user'],
         default: function () {
-            return this.email === 'adminCoder@coder.com' ? 'admin' : 'usuario';
+            return this.email === 'brandoperezinciarte@gmail.com' ? 'admin' : 'user';
           }
     },
     age: {
