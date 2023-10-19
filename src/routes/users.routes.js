@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { userModel } from "../models/user.models.js";
 import { validatePassword, createHash } from "../utils/bcrypt.js";
-import passport from "passport";
+import passport, { authorize, session } from "passport";
 
 const routerUser = Router();
 
@@ -62,6 +62,12 @@ routerUser.post('/login', passport.authenticate('login'), async (req, res) => {
             age : req.user.age,
             email : req.user.email
         }
+
+        const token = generateToken(req.user)
+        res.cookie('jwtCookie', token, {
+            maxAge: 43200000
+        });
+
         res.status(200).send({ playload: req.user})
     }catch(error){
         res.status(500).send({message: `Error al iniciar sessión ${error}`});
@@ -85,6 +91,19 @@ routerUser.post('/login', passport.authenticate('login'), async (req, res) => {
         res.status(400).send({ error: `Error al iniciar sesión ${error}`})
     }*/
 })
+routerUser.get('/testJWT', passport.authenticate('jwt', { session: true }), async (req, res) =>{
+    res.status(200).send({ mensaje: req.user});
+    req.session.user = {
+        first_name: req.user.user.first_name,
+        last_name: req.user.user.last_name,
+        age: req.user.user.age,
+        email: req.user.user.email
+    }
+});
+
+routerUser.get('/current', passportError('jwt'), authorization('user'), (req, res) =>{
+    res.send(req.user);
+})
 
 routerUser.get('/github', passport.authenticate('github', {scope: ['user:email']}), async (req, res) =>{
     res.status(200).send({ message: 'Usuario creado con github'});
@@ -98,6 +117,7 @@ routerUser.get('/logout', async (req, res) =>{
     if(req.session){
         req.session.destroy();
     }
+    res.clearCookie('jwtCookie');
     res.status(200).send({ resultado: 'OK', message: 'Ha finalizado la sessión'});
 })
 

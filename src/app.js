@@ -10,11 +10,6 @@ import MongoStore from 'connect-mongo';
 import passport from 'passport';
 
 import ProductManager from "./controllers/productManager.js";
-import routerProduct from "./routes/products.routes.js";
-import routerCart from "./routes/carts.routes.js";
-import routerMessages from "./routes/messages.routes.js";
-import routerUser from "./routes/users.routes.js";
-import routerIndex from "./routes/index.routes.js";
 import messageModel from "./models/messages.models.js";
 
 import {__dirname} from "./path.js";
@@ -91,10 +86,5 @@ app.get("/static/realtimeproducts", (req, res) =>{
 })
 
 
+app.use('/', router)
 
-
-app.use('/api/products', routerProduct);
-app.use('/api/carts', routerCart);
-app.use('/api/messages', routerMessages);
-app.use('/api/users', routerUser);
-app.use('/api/index', routerIndex);
