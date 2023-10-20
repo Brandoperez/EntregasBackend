@@ -14,7 +14,8 @@ import messageModel from "./models/messages.models.js";
 
 import {__dirname} from "./path.js";
 import path from 'path';
-import initializarPassport from './config/config.js';
+import router from './routes/app.routes.js'
+import initializarPassport from './config/passport.js';
 
 
 const app = Express();

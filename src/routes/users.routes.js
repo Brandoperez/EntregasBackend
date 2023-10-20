@@ -1,7 +1,8 @@
 import { Router } from "express";
 import { userModel } from "../models/user.models.js";
 import { validatePassword, createHash } from "../utils/bcrypt.js";
-import passport, { authorize, session } from "passport";
+import { passportError, authorization } from "../utils/messageErrors.js"
+import passport  from "passport";
 
 const routerUser = Router();
 
