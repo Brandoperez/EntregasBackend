@@ -2,11 +2,11 @@ import 'dotenv/config';
 import Jwt  from 'jsonwebtoken';
 
 export const generateToken = (user) =>{
-    const token = Jwt.sign({ user}, process.env.JWT_SECRET, { expiresIn: '12h'});
+    const token = Jwt.sign({ user }, process.env.JWT_SECRET, { expiresIn: '12h'});
     return token
 }
 
-console.log(generateToken({ "_id": "6531c158b3c040d263bf057d", "first_name": "Mare", "last_name": "liza", "email": "mare@gmail.com", "password": "$2b$15$UtgCDG2WQmvLAaf01uTtm.S9yETcZ2eBhx5DgsFbIiQRmMcvIlDDi", "rol": "user", "age": { "$numberInt": "23" } }))
+console.log(generateToken({"_id":"6533bdf108136e9dde9b45e9","first_name":"Brando","last_name":"Perez","email":"brandoperezinciarte@gmail.com","password":"$2b$10$SbaH9zEbeaCmmW3IUOp39uX0S8rHey5k9KLm4BTTHGnKr4eioJZyi","age":{"$numberInt":"25"},}));
 
 export const authToken = (req, res, next) => {
     const authHeader = req.headers.Authorization

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { userModel } from "../models/user.models.js";
-import { validatePassword, createHash } from "../utils/bcrypt.js";
+import { generateToken } from "../utils/jwt.js";
 import { passportError, authorization } from "../utils/messageErrors.js"
 import passport  from "passport";
 
@@ -94,6 +94,7 @@ routerUser.post('/login', passport.authenticate('login'), async (req, res) => {
 })
 routerUser.get('/testJWT', passport.authenticate('jwt', { session: true }), async (req, res) =>{
     res.status(200).send({ mensaje: req.user});
+    console.log(req.user.user)
     req.session.user = {
         first_name: req.user.user.first_name,
         last_name: req.user.user.last_name,
