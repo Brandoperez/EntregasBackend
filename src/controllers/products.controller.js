@@ -1,4 +1,4 @@
-import productsModel from "../models/products.models.jd";
+import productsModel from "../models/products.models.js";
 
 export const getProducts = async (req, res) =>{
     const {limit = 10, page = 1, sort, query, category, status} = req.query;

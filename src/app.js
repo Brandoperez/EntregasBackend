@@ -9,7 +9,6 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import passport from 'passport';
 
-import ProductManager from "./controllers/productManager.js";
 import messageModel from "./models/messages.models.js";
 
 import {__dirname} from "./path.js";
