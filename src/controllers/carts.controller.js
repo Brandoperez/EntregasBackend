@@ -1,4 +1,6 @@
+import productsModel from '../models/products.models.js';
 import cartsModel from '../models/carts.models.js';
+import { userModel } from '../models/user.models.js';
 
 export const createCart = async (req, res) => {
 
@@ -119,5 +121,36 @@ export const updateCart = async (req, res) =>{
             res.status(200).send({ resultado: 'OK', message: "Producto actualizado correctamente"});
         }catch(error){
             res.status(400).send({ error: `Error al actualizar el producto del carrito ${error}`});
+        }
+}
+
+export const purcharseCart = async (req, res) => {
+
+    const { cid } = req.params;
+        try{
+            const cart = await cartsModel.findById(cid);
+            const products = await productsModel.find();
+                if(cart){
+                    const user = await usersModel.find({ cart: cart._id});
+                    const email = user[0].email;
+                    let amount = 0;
+                    const itemsCompra = [];
+                    cart.products.forEach( async item => {
+                        const product = products.find(prod => prod._id == item.id_prod.toString());
+                            if(product.stock >= item.quantity){
+                                amount += product.price * item.quantity;
+                                product.stock -= item.quantity;
+                                await product.save();
+                                itemsCompra.push(product.title);
+                            }
+                    });
+                    console.log(itemsCompra);
+                    await cartsModel.findByIdAndUpdate(cid, { products: [] });
+                    res.redirect(`http://localhost:4000/api/tickets/create?amount=${amount}&email=${email}`);
+                }else{
+                    res.status(404).send({ resultado: 'Not Found', message: cart});
+                }
+        }catch(error){
+            res.status(500).send({ error: `Error al cargar el carrito: ${error}`});
         }
 }
