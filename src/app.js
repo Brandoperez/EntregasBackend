@@ -10,6 +10,7 @@ import MongoStore from 'connect-mongo';
 import passport from 'passport';
 
 import messageModel from "./models/messages.models.js";
+import errorHandlers from './middlewares/errors/errorHandlers.js';
 
 import {__dirname} from "./path.js";
 import path from 'path';
@@ -87,4 +88,5 @@ app.get("/static/realtimeproducts", (req, res) =>{
 
 
 app.use('/', router)
+app.use(errorHandlers);
 

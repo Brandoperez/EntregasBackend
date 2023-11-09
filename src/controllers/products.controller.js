@@ -1,4 +1,7 @@
 import productsModel from "../models/products.models.js";
+import CustomError from "../services/errors/CustomErrors.js";
+import Errors from "../services/errors/enums.js";
+import { generateProductErrorInfo } from '../services/errors/info.js';
 
 export const getProducts = async (req, res) =>{
     const {limit = 10, page = 1, sort, query, category, status} = req.query;
@@ -46,11 +49,26 @@ export const addProducts = async (req, res) => {
 
     const { title, description, price, category, stock, code } = req.body
     try{
+        validateProductRequired({ title, price, category });
+
         const confirmacion = await productsModel.create({ title, description, price, category, stock, code});
         res.status(200).send({ resultado: 'OK', message: confirmacion});
     }catch(error){
         res.status(400).send({ error: `Error al crear el producto ${error}`});
     }
+}
+
+const validateProductRequired =  (products ) => {
+    const camposRequeridos = ["title", "price", "category"];
+        for(let campo of camposRequeridos){
+            if(!products[campo]){
+                throw CustomError.createError({
+                    name: Errors.MISSING_REQUIRED_FIELDS.name,
+                    message: generateProductErrorInfo(products),
+                    code: Errors.MISSING_REQUIRED_FIELDS.code,
+                });
+            }
+        }
 }
 
 export const updateProducts = async (req, res ) =>{
@@ -59,6 +77,9 @@ export const updateProducts = async (req, res ) =>{
     const { title, description, price, category, stock, code, status } = req.body;
 
     try{
+
+        validateProductRequired({ title, price, category });
+        
         const confirmacion = productsModel.findByIdAndUpdate(id, {title, description, price, category, stock, code, status});
             if(confirmacion){
                 res.status(200).send({ resultado: 'OK', message: confirmacion});
