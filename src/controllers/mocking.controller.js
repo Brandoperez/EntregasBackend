@@ -1,5 +1,5 @@
-import faker from "faker";
-import productModel from "../models/products.models";
+import { faker } from '@faker-js/faker'
+import productModel from "../models/products.models.js";
 
 export const generateProductsMocking = async (req, res) => {
     try{
