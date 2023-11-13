@@ -1,6 +1,7 @@
+
 import winston from "winston";
 
-const logger = winston.createLogger({
+const customOptionsLevels = {
     levels: {
         debug: 1,
         http: 2,
@@ -9,25 +10,32 @@ const logger = winston.createLogger({
         error: 5,
         fatal: 6
     },
-    level: 'debug',
-    format: winston.format.combine(
-        winston.format.colorize(),
-        winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss'}),
-        winston.format.printf(({level, message, timestamp}) => `${level}: ${message}: [${timestamp}]`)
-    ),
+    colors: {
+        debug: 'white',
+        http: 'green',
+        info: 'blue',
+        warning: 'yellog',
+        error: 'magenta',
+        fatal: 'red'
+    }
+}
+const logger = winston.createLogger({
+    levels : customOptionsLevels.levels,
     transports: [
-        new winston.transports.Console(),
-        new winston.transports.File({filename: 'error.log', level: 'error'})
-    ]
+        new winston.transports.File({filename: './src/logs/errors.log', level: 'error',
+        format: winston.format.combine(
+                winston.format.timestamp(),
+                winston.format.json(),
+        )
+    }),
+        new winston.transports.Console({
+            level: 'debug',
+            format: winston.format.combine(
+                winston.format.colorize({ colors: customOptionsLevels.colors }),
+                winston.format.simple(),
+            ),
+        }),
+    ],
 });
 
-winston.addColors({
-    debug: "white",
-    http: "green",
-    info: "blue",
-    warning: "Yellog",
-    error: "red",
-    fatal: "orange"
-});
-
-export default logger;
+export default logger

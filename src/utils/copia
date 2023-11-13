@@ -1,0 +1,34 @@
+/*import winston from "winston";
+const customOptionsLevels = {
+    levels: {
+        debug: 1,
+        http: 2,
+        info: 3,
+        warning: 4,
+        error: 5,
+        fatal: 6
+    },
+    colors: {
+        debug: 'white',
+        http: 'green',
+        info: 'blue',
+        warning: 'yellow',
+        error: 'magenta',
+        fatal: 'red'
+    }
+}
+const logger = winston.createLogger({
+    levels : customOptionsLevels.levels,
+    format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss'}),
+        winston.format.printf(({level, message, timestamp}) => `${level}: ${message}: [${timestamp}]`)
+    ),
+    transports: [
+        new winston.transports.Console(),
+        new winston.transports.File({filename: './src/logs/errors.log', level: 'error'})
+    ]
+});
+
+export default logger;
+*/

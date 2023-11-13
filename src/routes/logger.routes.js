@@ -10,6 +10,7 @@ routerLogger.get('/', (req, res) => {
     logger.warning('Mensaje de prueba - Warning');
     logger.error('Mensaje de prueba - Error');
     logger.fatal('Mensaje de prueba - Fatal')
+    
 })
 
 export default routerLogger
