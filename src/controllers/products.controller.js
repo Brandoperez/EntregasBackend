@@ -41,7 +41,7 @@ export const getProductsById = async (req, res) =>{
             res.status(404).send({ resultado: 'Not found', message: prods});
         }
     }catch(error){
-        res.status(400).send({error: `Error al consultar los productos: ${error}`});
+        res.status(500).send({error: `Error al consultar los productos: ${error}`});
     }
 }
 
@@ -54,7 +54,7 @@ export const addProducts = async (req, res) => {
         const confirmacion = await productsModel.create({ title, description, price, category, stock, code});
         res.status(200).send({ resultado: 'OK', message: confirmacion});
     }catch(error){
-        res.status(400).send({ error: `Error al crear el producto ${error}`});
+        res.status(500).send({ error: `Error al crear el producto ${error}`});
     }
 }
 
@@ -84,10 +84,10 @@ export const updateProducts = async (req, res ) =>{
             if(confirmacion){
                 res.status(200).send({ resultado: 'OK', message: confirmacion});
             }else{
-                res.status(404).send({ resultado: 'Not found', confirmacion});
+                res.status(404).send({ resultado: 'Producto no encontrado', confirmacion});
             }
     }catch(error){
-        res.status(400).send({ error: `No se pudo actualizar el producto: ${error}`});
+        res.status(500).send({ error: `No se pudo actualizar el producto: ${error}`});
     }
 }
 
@@ -99,9 +99,9 @@ export const deleteProducts = async (req, res) =>{
             if(confirmacion){
                 res.status(200).send({ resultado: 'OK', confirmacion});
             }else{
-                res.status(404).send({ resultado: 'Not found', confirmacion});
+                res.status(404).send({ resultado: 'Producto no encontrado', confirmacion});
             }
     }catch(error){
-        res.status(400).send({ error: `No se pudo eliminar el producto: ${error}`})
+        res.status(500).send({ error: `No se pudo eliminar el producto: ${error}`})
     }
 }

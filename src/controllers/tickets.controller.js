@@ -25,11 +25,3 @@ export const getTickets = async (req, res ) => {
     }
 }
 
-/*{
-    "title": "Pan Dulce",
-    "description": "Pan dulce con betun de obediencia",
-    "price": 50,
-    "stock": 60,
-    "category": "Harinas",
-    "code": "pdul123"
-}*/

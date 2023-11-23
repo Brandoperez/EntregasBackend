@@ -3,3 +3,8 @@
 {"level":"info","message":"Mensaje de prueba - Info","timestamp":"2023-11-13T23:58:42.749Z"}
 {"level":"warning","message":"Mensaje de prueba - Warning","timestamp":"2023-11-13T23:58:42.750Z"}
 {"level":"error","message":"Mensaje de prueba - Error","timestamp":"2023-11-13T23:58:42.750Z"}
+{"level":"debug","message":"Mensaje de prueba - Debug","timestamp":"2023-11-14T00:01:23.362Z"}
+{"level":"http","message":"Mensaje de prueba - Http","timestamp":"2023-11-14T00:01:23.366Z"}
+{"level":"info","message":"Mensaje de prueba - Info","timestamp":"2023-11-14T00:01:23.367Z"}
+{"level":"warning","message":"Mensaje de prueba - Warning","timestamp":"2023-11-14T00:01:23.367Z"}
+{"level":"error","message":"Mensaje de prueba - Error","timestamp":"2023-11-14T00:01:23.368Z"}

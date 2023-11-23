@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { github, githubSession, login, logout, register, viewLogin, viewRegister,  } from "../controllers/users.controller.js";
+import { github, githubSession, login, logout, register, viewLogin, viewRegister, passwordRecovery, resetPassword} from "../controllers/users.controller.js";
 import { passportError, authorization } from "../utils/messageErrors.js"
 import passport  from "passport";
 
@@ -8,6 +8,8 @@ const routerUser = Router();
 
 routerUser.get('/register', viewRegister);
 routerUser.post('/register', passport.authenticate('register'), register);
+routerUser.post('/passwordRecovery', passwordRecovery);
+routerUser.post('/resetPassword/:token', resetPassword);
 routerUser.get('/login', viewLogin)
 routerUser.post('/login', passport.authenticate('login'), login)
 routerUser.get('/github', passport.authenticate('github', {scope: ['user:email']}), github);
