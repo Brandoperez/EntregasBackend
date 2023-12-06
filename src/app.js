@@ -11,6 +11,9 @@ import passport from 'passport';
 
 import messageModel from "./models/messages.models.js";
 import errorHandlers from './middlewares/errors/errorHandlers.js';
+import logger from './utils/logger.js';
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUiExpress from 'swagger-ui-express'; 
 
 import {__dirname} from "./path.js";
 import path from 'path';
@@ -21,14 +24,29 @@ import initializarPassport from './config/passport.js';
 const app = Express();
 const PORT = 4000;
 
+const swaggerOptions = {
+    definition: {
+        openapi: "3.1.0",
+        info: {
+            title: "Documentación eccomerce coderHouse",
+            version: "1.0.0",
+            description: "Api Eccomerce CoderBackend",
+        },
+    },
+    apis: [`${__dirname}/docs/**/*.yaml`]
+}
+
+const specs = swaggerJSDoc(swaggerOptions)
+app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
+
 mongoose.connect(process.env.URL_MONGO)
-    .then(() => console.log("BD conectada"))
-    .catch((error) => console.log("Error en conexión a mongoDB atlas: ", error));
+    .then(() => logger.info("BD conectada"))
+    .catch((error) => logger.error("Error en conexión a mongoDB atlas: ", error));
 
 
 //SERVER
 const server = app.listen(PORT, () =>{
-    console.log("Servidor funcionando");
+    logger.info("Servidor funcionando");
 });
 
 const io = new Server(server);
@@ -56,7 +74,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 io.on("connection", (socket) => {
-    console.log("Conexion con socket.io");
+    logger.info("Conexion con socket.io");
 
     socket.on("nuevoMensaje", async (data) =>{
         const {email, message} = data;

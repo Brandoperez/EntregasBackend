@@ -1,0 +1,42 @@
+paths:
+  /api/carts/:
+    get:
+      summary: Obtiene todos los carritos
+      tags:
+        - Cart
+      description: Obtiene todas las cart disponibles
+      responses:
+        '200':
+          description: Cart obtenidas satisfactoriamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '404':
+          description: Error al obtener los carritos
+        '500':
+          description: Error del servidor al obtener los carritos
+
+  /api/carts/{id}:
+    get:
+      summary: Obtiene el carrito por su Id
+      tags:
+        - Cart
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: Id del carrito
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Obtiene el carrito solicitado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '404':
+          description: No se encontró el carrito solicitado
+        '500':
+          description: Error del servidor al buscar un carrito por su id

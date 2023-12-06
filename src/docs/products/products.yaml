@@ -1,0 +1,83 @@
+paths:
+  /api/products/:
+    get:
+      summary: Obtener todos los productos
+      tags:
+        - Products
+      responses:
+        '200':
+          description: Obtiene un array de productos
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Product'
+        '500':
+          description: Error del servidor para traer todos los productos
+
+  /api/products/{id}:
+    get:
+      summary: Obtiene un producto por ID
+      tags:
+        - Products
+      parameters: 
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Id del producto
+      responses: 
+        '200':
+          description: Producto obtenido satisfactoriamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Error al encontrar el producto por su Id
+        '500':
+          description: Error del servidor
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id: 
+          type: string
+          description: Id generado desde MongoDB
+        title: 
+          type: string
+          description: Nombre del producto
+        description:
+          type: string
+          description: Descripción del producto
+        price:
+          type: number
+          description: Precio del producto
+        stock: 
+          type: number
+          description: Stock del producto
+        thumbnail:
+          type: string
+          description: Imagen del producto
+        code:
+          type: string
+          description: Código del producto
+        category: 
+          type: string 
+          description: Categoría del producto
+        quantity: 
+          type: number
+          description: Detalle del stock del producto
+      example:
+        _id: ObjectId('64f9158f87fb03d3da94e2db')
+        title: Arroz
+        description: Producto saludable.
+        price: 500
+        stock: 3
+        thumbnail: array
+        code: Arr123
+        category: "Granos"

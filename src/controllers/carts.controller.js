@@ -1,6 +1,7 @@
 import productsModel from '../models/products.models.js';
 import cartsModel from '../models/carts.models.js';
 import { userModel } from '../models/user.models.js';
+import logger from '../utils/logger.js';
 
 export const createCart = async (req, res) => {
 
@@ -8,7 +9,8 @@ export const createCart = async (req, res) => {
         const respuesta = await cartsModel.create({});
         res.status(200).send({ resultado: "OK", message: respuesta });
       } catch (error) {
-        res.status(400).send({ error: `Error al crear el carrito: ${error}` });
+        logger.error(`Error al crear el carrito`);
+        res.status(500).send({ error: `Error al crear el carrito: ${error}` });
       }
 }
 
@@ -31,7 +33,8 @@ export const addProductToCart = async (req, res) =>{
             res.status(404).send({ respuesta: 'Not found', message: 'No se pudo encontrar la tarjeta'});
             }
     }catch(error){
-        res.status(400).send({ error: `Error al cargar la tarjeta: ${error}`});
+        logger.error(`Error al agregar productos al carrito`);
+        res.status(500).send({ error: `Error al cargar la tarjeta: ${error}`});
     }
 }
 
@@ -55,7 +58,8 @@ export const updateProductToCart = async (req, res) => {
                 res.status(404).send({ restultado: 'Not found', message: 'Producto no encontrado'});
             }
         }catch(error){
-            res.status(400).send({ error: `Error al actualizar el producto del carrito ${error}`});
+            logger.error(`Error al actualizar el producto del carrito`);
+            res.status(500).send({ error: `Error al actualizar el producto del carrito ${error}`});
         }
 }
 
@@ -74,7 +78,8 @@ export const updateCart = async (req, res) =>{
             await cart.save();
             res.status(200).send({ resultado: 'OK', message: "Producto actualizado correctamente"});
         }catch(error){
-            res.status(400).send({ error: `Error al actualizar el producto del carrito ${error}`});
+            logger.error(`Error al actualizar el carrito`);
+            res.status(500).send({ error: `Error al actualizar el producto del carrito ${error}`});
         }
 }
 export const getCartById = async (req, res) => {
@@ -84,6 +89,7 @@ export const getCartById = async (req, res) => {
         const cart = await cartsModel.findById(cid).populate('products.product');
         cart ? res.status(200).send({ respuesta: 'OK', message: prods}) : res.status(404).send({error: 'No se encontró el carrito'});
     }catch(error){
+        logger.error(`Error al obtener el carrito`);
         res.status(500).send({ error: `Error al encontrar el id del carrito ${error}`})
     }
 }
@@ -102,7 +108,8 @@ export const deleteProductFromCart = async (req, res) => {
                 await cart.save();
                 res.status(200).send({ resultado: 'OK', message: "Producto eliminado con éxito"});
             }catch(error){
-                res.status(400).send({ error: `Error al eliminar el producto del carrito ${error}`})
+                logger.error(`Error al eliminar el producto del carrito`);
+                res.status(500).send({ error: `Error al eliminar el producto del carrito ${error}`})
             }
 }
 
@@ -119,7 +126,8 @@ export const deleteCart = async (req, res) =>{
 
         res.status(200).send({ resultado: 'OK', message: 'Todos los productos han sido eliminados'});
     }catch(error){
-        res.status(400).send({error: `Error al eliminar todos los productos ${error}`});
+        logger.error(`Error al eliminar el carrito`);
+        res.status(500).send({error: `Error al eliminar todos los productos ${error}`});
     }
 }
 
@@ -159,6 +167,7 @@ export const purcharseCart = async (req, res) => {
                     res.status(404).send({ resultado: 'Not Found', message: cart});
                 }
         }catch(error){
+            logger.error(`Error al cargar el carrito`);
             res.status(500).send({ error: `Error al cargar el carrito: ${error}`});
         }
 }
@@ -172,6 +181,7 @@ export const getCarts = async (req, res) =>{
                 message: carts && carts.length > 0 ? carts : 'No se encontraron carritos'
             })
         }catch(error){
-            res.status(400).send({ error: `Error al obtener carritos: ${error}` });
+            logger.error(`Error al mostrar los carritos disponibles`);
+            res.status(500).send({ error: `Error al obtener carritos: ${error}` });
         }
 }

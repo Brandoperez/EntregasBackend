@@ -8,3 +8,15 @@
 {"level":"info","message":"Mensaje de prueba - Info","timestamp":"2023-11-14T00:01:23.367Z"}
 {"level":"warning","message":"Mensaje de prueba - Warning","timestamp":"2023-11-14T00:01:23.367Z"}
 {"level":"error","message":"Mensaje de prueba - Error","timestamp":"2023-11-14T00:01:23.368Z"}
+{"level":"info","message":"Servidor funcionando","timestamp":"2023-12-06T22:49:13.206Z"}
+{"level":"info","message":"BD conectada","timestamp":"2023-12-06T22:49:14.502Z"}
+{"level":"info","message":"Servidor funcionando","timestamp":"2023-12-06T23:26:30.306Z"}
+{"level":"info","message":"BD conectada","timestamp":"2023-12-06T23:26:31.528Z"}
+{"level":"info","message":"Servidor funcionando","timestamp":"2023-12-06T23:28:47.239Z"}
+{"level":"info","message":"BD conectada","timestamp":"2023-12-06T23:28:48.839Z"}
+{"level":"info","message":"Servidor funcionando","timestamp":"2023-12-06T23:33:15.836Z"}
+{"level":"info","message":"BD conectada","timestamp":"2023-12-06T23:33:16.963Z"}
+{"level":"info","message":"Servidor funcionando","timestamp":"2023-12-06T23:35:41.871Z"}
+{"level":"info","message":"BD conectada","timestamp":"2023-12-06T23:35:43.117Z"}
+{"level":"info","message":"Servidor funcionando","timestamp":"2023-12-06T23:36:20.855Z"}
+{"level":"info","message":"BD conectada","timestamp":"2023-12-06T23:36:22.031Z"}

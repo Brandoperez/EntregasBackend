@@ -16,6 +16,7 @@ export const register = async (req, res ) => {
             return res.status(200).send({ mensaje: 'Usuario creado'});
         }
     }catch(error){
+        logger.error(`Error al crear usuario`);
         res.status(500).send({mensaje: `El usuario no se pudo crear ${error}`});
     } 
 }
@@ -103,6 +104,7 @@ export const login = async (req, res) => {
 
         res.status(200).send({ playload: req.user})
     }catch(error){
+        logger.error(`Error al iniciar sessión`);
         res.status(500).send({message: `Error al iniciar sessión ${error}`});
     }
 }

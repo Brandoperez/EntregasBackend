@@ -2,6 +2,7 @@ import productsModel from "../models/products.models.js";
 import CustomError from "../services/errors/CustomErrors.js";
 import Errors from "../services/errors/enums.js";
 import { generateProductErrorInfo } from '../services/errors/info.js';
+import logger from "../utils/logger.js";
 
 export const getProducts = async (req, res) =>{
     const {limit = 10, page = 1, sort, query, category, status} = req.query;
@@ -26,6 +27,7 @@ export const getProducts = async (req, res) =>{
         const prods = await productsModel.paginate(filter, opciones);
         res.status(200).send({ resultado: 'OK', message: prods});
     }catch(error){
+        logger.error(`Error al consultar los productos`);
         res.status(500).send({ error: `Error al consultar los productos: ${error}`});
     }
 }
@@ -41,7 +43,8 @@ export const getProductsById = async (req, res) =>{
             res.status(404).send({ resultado: 'Not found', message: prods});
         }
     }catch(error){
-        res.status(500).send({error: `Error al consultar los productos: ${error}`});
+        logger.error(`Error al consultar el producto`);
+        res.status(500).send({error: `Error al consultar el producto: ${error}`});
     }
 }
 
@@ -54,6 +57,7 @@ export const addProducts = async (req, res) => {
         const confirmacion = await productsModel.create({ title, description, price, category, stock, code});
         res.status(200).send({ resultado: 'OK', message: confirmacion});
     }catch(error){
+        logger.error(`Error a crear un nuevo producto`);
         res.status(500).send({ error: `Error al crear el producto ${error}`});
     }
 }
@@ -87,6 +91,7 @@ export const updateProducts = async (req, res ) =>{
                 res.status(404).send({ resultado: 'Producto no encontrado', confirmacion});
             }
     }catch(error){
+        logger.error(`Error al actualizar el producto`);
         res.status(500).send({ error: `No se pudo actualizar el producto: ${error}`});
     }
 }
@@ -102,6 +107,7 @@ export const deleteProducts = async (req, res) =>{
                 res.status(404).send({ resultado: 'Producto no encontrado', confirmacion});
             }
     }catch(error){
+        logger.error(`Error al eliminar el producto`);
         res.status(500).send({ error: `No se pudo eliminar el producto: ${error}`})
     }
 }
