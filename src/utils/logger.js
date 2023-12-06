@@ -3,12 +3,12 @@ import winston from "winston";
 
 const customOptionsLevels = {
     levels: {
-        debug: 1,
-        http: 2,
-        info: 3,
-        warning: 4,
-        error: 5,
-        fatal: 6
+        fatal: 1,
+        error: 2,
+        warn: 3,
+        info: 4,
+        http: 5,
+        debug: 6,
     },
 };
 const logger = winston.createLogger({

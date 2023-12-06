@@ -20,3 +20,23 @@
 {"level":"info","message":"BD conectada","timestamp":"2023-12-06T23:35:43.117Z"}
 {"level":"info","message":"Servidor funcionando","timestamp":"2023-12-06T23:36:20.855Z"}
 {"level":"info","message":"BD conectada","timestamp":"2023-12-06T23:36:22.031Z"}
+{"level":"debug","message":"Mensaje de prueba - Debug","timestamp":"2023-12-06T23:46:44.721Z"}
+{"level":"http","message":"Mensaje de prueba - Http","timestamp":"2023-12-06T23:46:44.727Z"}
+{"level":"info","message":"Mensaje de prueba - Info","timestamp":"2023-12-06T23:46:44.729Z"}
+{"level":"warning","message":"Mensaje de prueba - Warning","timestamp":"2023-12-06T23:46:44.730Z"}
+{"level":"error","message":"Mensaje de prueba - Error","timestamp":"2023-12-06T23:46:44.731Z"}
+{"level":"info","message":"Servidor funcionando","timestamp":"2023-12-06T23:48:26.975Z"}
+{"level":"info","message":"BD conectada","timestamp":"2023-12-06T23:48:28.201Z"}
+{"level":"info","message":"Servidor funcionando","timestamp":"2023-12-06T23:50:57.265Z"}
+{"level":"info","message":"BD conectada","timestamp":"2023-12-06T23:50:58.897Z"}
+{"level":"debug","message":"Mensaje de prueba - Debug","timestamp":"2023-12-06T23:50:59.115Z"}
+{"level":"http","message":"Mensaje de prueba - Http","timestamp":"2023-12-06T23:50:59.121Z"}
+{"level":"info","message":"Mensaje de prueba - Info","timestamp":"2023-12-06T23:50:59.124Z"}
+{"level":"warning","message":"Mensaje de prueba - Warn","timestamp":"2023-12-06T23:50:59.124Z"}
+{"level":"error","message":"Mensaje de prueba - Error","timestamp":"2023-12-06T23:50:59.125Z"}
+{"level":"info","message":"Servidor funcionando","timestamp":"2023-12-06T23:52:19.456Z"}
+{"level":"info","message":"BD conectada","timestamp":"2023-12-06T23:52:20.835Z"}
+{"level":"http","message":"Mensaje de prueba - Http","timestamp":"2023-12-06T23:52:21.025Z"}
+{"level":"info","message":"Mensaje de prueba - Info","timestamp":"2023-12-06T23:52:21.027Z"}
+{"level":"warning","message":"Mensaje de prueba - Warn","timestamp":"2023-12-06T23:52:21.028Z"}
+{"level":"error","message":"Mensaje de prueba - Error","timestamp":"2023-12-06T23:52:21.029Z"}
