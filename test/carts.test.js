@@ -41,6 +41,37 @@ await mongoose.connect(process.env.URL_MONGO)
             }catch(error){
                 logger.error({ error: `Error al hacer test para crear un nuevo carrito: ${error}`})
             }
+        });
+    });
+
+    describe('Test para agregar productos al carrito', function () {
+        it('Test endpoint: POST /api/carts/:cid/products/:pid, se espera agregar un producto al carrito', async function () {
+            try{
+                const cartId = '6533d5298e727a6fa7554bab';
+                const productId = '64f9158f87fb03d3da94e2db';
+                const response = await requester.post(`/api/carts/${cartId}/products/${productId}`)
+                    .set("Cookie", cookie)
+                    .send({
+                         quantity: 1
+                    });
+                logger.info(response.body);
+                expect(response.body.products).to.equal('OK')
+            }catch(error){
+                logger.error({ error: `Error al cargar productos en el carrito: ${error}`});
+            }
+        });
+    });
+
+    describe('Test para realizar la compra', function () {
+        it('Test endpoint: POST /api/carts/:cid/purcharse, se espera comprar el carrito', async function () {
+            try{
+                const cartId = '6533d5298e727a6fa7554bab';
+                const response = await requester.post(`/api/carts/${cartId}/purchase`)
+                    .set("Cookie", cookie)
+                    logger.info(response.body);
+                    expect(response.body.message).to.equal('Compra finalizada');
+            }catch(error){
+                logger.error({ error: `Error al comprar el carrito: ${error}`});
+            }
         })
-        
     })

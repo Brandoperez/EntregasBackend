@@ -50,11 +50,11 @@ export const getProductsById = async (req, res) =>{
 
 export const addProducts = async (req, res) => {
 
-    const { title, description, price, category, stock, code } = req.body
+    const { title, description, price, category, stock, code, thumbnails  } = req.body
     try{
         validateProductRequired({ title, price, category });
 
-        const confirmacion = await productsModel.create({ title, description, price, category, stock, code});
+        const confirmacion = await productsModel.create({ title, description, price, category, stock, code, thumbnails });
         res.status(200).send({ resultado: 'OK', message: confirmacion});
     }catch(error){
         logger.error(`Error a crear un nuevo producto`);

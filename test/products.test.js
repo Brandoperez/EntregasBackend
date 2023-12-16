@@ -17,9 +17,10 @@ await mongoose.connect(process.env.URL_MONGO)
     describe('Test de productos en eccomerce', function () {
         let token;
         let cookie;
-        let getProductCreated;
+        let getProductCreated = null;
 
             before(async function() {
+
                 const credentialsAdmin = {
                     email: process.env.EMAIL_CREDENTIALS,
                     password: process.env.PASSWORD_CREDENTIALS
@@ -27,17 +28,19 @@ await mongoose.connect(process.env.URL_MONGO)
 
                 const response = await requester.post('/api/users/login').send(credentialsAdmin);
                 logger.info(response.body);
-                cookie = response.headers['set-cookie'];
-                logger.info(cookie);
+                cookie = response.headers['set-cookie'][0];
+                console.log(cookie)
+                //logger.info(cookie);
                 token = response.body.token
 
-                getProductCreated = await ProductModel.findOne({ title: "Manteqilla"});
+                getProductCreated = await ProductModel.findOne({ title: "Mantequilla"});
             });
     });
 
     describe('Test de creacion de productos', function () {
         it('Test endpoint: POST /api/products, se espera crear un nuevo producto', async function() {
             try{
+                console.log("El valor de la cookie es:", cookie)
                 const response = await requester.post('/api/products')
                 .set("Cookie", cookie).send({
                         "title": "Mantequilla",
@@ -61,7 +64,7 @@ await mongoose.connect(process.env.URL_MONGO)
     describe('Test para actualizar productos', function (){
         it('Test endpoint: PUT /api/products/id, se espera actualizar un producto por su id', async () =>{
             try{
-                const response = await requester.put(`${getProductCreated._id}`)
+                const response = await requester.put(`/api/products/${getProductCreated._id}`)
                 .set("Cookie", cookie)
                 .send({
                     price: Math.floor(Math.random() * 100)

@@ -40,3 +40,48 @@
 {"level":"info","message":"Mensaje de prueba - Info","timestamp":"2023-12-06T23:52:21.027Z"}
 {"level":"warning","message":"Mensaje de prueba - Warn","timestamp":"2023-12-06T23:52:21.028Z"}
 {"level":"error","message":"Mensaje de prueba - Error","timestamp":"2023-12-06T23:52:21.029Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T02:39:16.871Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T02:39:16.878Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T02:41:09.925Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T02:41:09.931Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T02:46:59.009Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T02:46:59.016Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T02:50:12.742Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T02:50:12.746Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T02:54:34.479Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T02:54:34.487Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T03:00:29.961Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T03:00:29.973Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T03:10:41.855Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T03:10:41.863Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T03:12:55.587Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T03:12:55.594Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T03:18:53.369Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T03:18:53.374Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T03:21:20.312Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T03:21:20.320Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T03:23:20.839Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T03:23:20.849Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T03:28:51.177Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T03:28:51.184Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T03:31:32.567Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T03:31:32.574Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T03:35:34.836Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T03:35:34.842Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T03:37:13.811Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-16T03:37:13.817Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un nuevo carrito: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T03:43:09.387Z"}
+{"level":"error","message":{"error":"Error al cargar productos en el carrito: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T03:43:09.395Z"}
+{"level":"error","message":{"error":"Error al comprar el carrito: ReferenceError: cookie is not defined"},"timestamp":"2023-12-16T03:43:09.399Z"}
+{"level":"error","message":{"error":"Error al hacer test para iniciar sessión con un usuario: AssertionError: expected undefined to equal 'Inicio de session exitoso'"},"timestamp":"2023-12-16T03:43:41.187Z"}
+{"level":"error","message":{"error":"Error al hacer test para registrar un usuario: AssertionError: expected undefined to equal 'Usuario creado satisfactoriamente'"},"timestamp":"2023-12-16T03:43:41.529Z"}
+{"level":"error","message":{"error":"Error al hacer test para cerra la sessión del usuario: AssertionError: expected undefined to equal 'Sesión cerrada con éxito'"},"timestamp":"2023-12-16T03:43:41.835Z"}
+{"level":"error","message":{"error":"Error al hacer test para registrar un usuario: AssertionError: expected undefined to equal 'Usuario creado satisfactoriamente'"},"timestamp":"2023-12-16T03:45:05.705Z"}
+{"level":"error","message":{"error":"Error al hacer test para cerra la sessión del usuario: AssertionError: expected undefined to equal 'Sesión cerrada con éxito'"},"timestamp":"2023-12-16T03:45:08.119Z"}
+{"level":"error","message":{"error":"Error al hacer test para iniciar sessión con un usuario: AssertionError: expected undefined to equal 'Inicio de session exitoso'"},"timestamp":"2023-12-16T03:45:08.262Z"}
+{"level":"error","message":{"error":"Error al hacer test para registrar un usuario: AssertionError: expected undefined to equal 'Usuario creado satisfactoriamente'"},"timestamp":"2023-12-16T03:48:27.697Z"}
+{"level":"error","message":{"error":"Error al hacer test para cerra la sessión del usuario: AssertionError: expected 'Ha finalizado la sessión' to equal 'Sesión cerrada con éxito'"},"timestamp":"2023-12-16T03:48:30.713Z"}
+{"level":"error","message":{"error":"Error al hacer test para iniciar sessión con un usuario: AssertionError: expected undefined to equal 'Inicio de session exitoso'"},"timestamp":"2023-12-16T03:48:31.013Z"}
+{"level":"error","message":{"error":"Error al hacer test para registrar un usuario: AssertionError: expected undefined to equal 'Usuario creado satisfactoriamente'"},"timestamp":"2023-12-16T03:56:45.994Z"}
+{"level":"error","message":{"error":"Error al hacer test para cerra la sessión del usuario: AssertionError: expected 'Ha finalizado la sessión' to equal 'Sesión cerrada con éxito'"},"timestamp":"2023-12-16T03:56:49.480Z"}
+{"level":"error","message":{"error":"Error al hacer test para iniciar sessión con un usuario: AssertionError: expected undefined to equal 'Inicio de session exitoso'"},"timestamp":"2023-12-16T03:56:49.808Z"}

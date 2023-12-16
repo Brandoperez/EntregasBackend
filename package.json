@@ -5,9 +5,11 @@
   "main": "productManager.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/app.js",
-    "testProducts": "mocha test/products.test.js"
+    "start": "node src/app.js",
+    "testProducts": "mocha test/products.test.js",
+    "testCarts": "mocha test/carts.test.js",
+    "testUsers": "mocha test/users.test.js"
   },
   "keywords": [],
   "author": "Brando Perez",

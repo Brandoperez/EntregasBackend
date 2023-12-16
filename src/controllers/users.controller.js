@@ -10,7 +10,8 @@ export const viewRegister = async (req, res) => {
 
 export const register = async (req, res ) => {
     try{
-        if(!req.user){
+        const existingUSer = await userModel.findOne({ email: req.body.email });
+        if(existingUSer){
             return res.status(400).send({ mensaje: 'Usuario ya existente'});
         }else{
             return res.status(200).send({ mensaje: 'Usuario creado'});
