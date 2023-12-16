@@ -85,3 +85,6 @@
 {"level":"error","message":{"error":"Error al hacer test para registrar un usuario: AssertionError: expected undefined to equal 'Usuario creado satisfactoriamente'"},"timestamp":"2023-12-16T03:56:45.994Z"}
 {"level":"error","message":{"error":"Error al hacer test para cerra la sessión del usuario: AssertionError: expected 'Ha finalizado la sessión' to equal 'Sesión cerrada con éxito'"},"timestamp":"2023-12-16T03:56:49.480Z"}
 {"level":"error","message":{"error":"Error al hacer test para iniciar sessión con un usuario: AssertionError: expected undefined to equal 'Inicio de session exitoso'"},"timestamp":"2023-12-16T03:56:49.808Z"}
+{"level":"error","message":{"error":"Error al hacer test para registrar un usuario: AssertionError: expected undefined to equal 'Usuario creado satisfactoriamente'"},"timestamp":"2023-12-16T03:58:46.117Z"}
+{"level":"error","message":{"error":"Error al hacer test para iniciar sessión con un usuario: AssertionError: expected undefined to equal 'Inicio de session exitoso'"},"timestamp":"2023-12-16T03:58:49.820Z"}
+{"level":"error","message":{"error":"Error al hacer test para cerra la sessión del usuario: AssertionError: expected 'Ha finalizado la sessión' to equal 'Sesión cerrada con éxito'"},"timestamp":"2023-12-16T03:58:49.838Z"}
