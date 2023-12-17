@@ -46,7 +46,7 @@ await mongoose.connect(process.env.URL_MONGO)
     });
     
     describe('Test de usuarios', function () {
-        it('Test endpoint: GET /api/users/login, se espera cerrar la sessión', async function (){
+        it('Test endpoint: GET /api/users/logout, se espera cerrar la sessión', async function (){
             try{
                 const response = await requester.get('/api/users/logout');
                 expect(response.body.message).to.equal('Sesión cerrada con éxito');

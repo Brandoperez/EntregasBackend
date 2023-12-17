@@ -88,3 +88,72 @@
 {"level":"error","message":{"error":"Error al hacer test para registrar un usuario: AssertionError: expected undefined to equal 'Usuario creado satisfactoriamente'"},"timestamp":"2023-12-16T03:58:46.117Z"}
 {"level":"error","message":{"error":"Error al hacer test para iniciar sessión con un usuario: AssertionError: expected undefined to equal 'Inicio de session exitoso'"},"timestamp":"2023-12-16T03:58:49.820Z"}
 {"level":"error","message":{"error":"Error al hacer test para cerra la sessión del usuario: AssertionError: expected 'Ha finalizado la sessión' to equal 'Sesión cerrada con éxito'"},"timestamp":"2023-12-16T03:58:49.838Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-17T17:03:05.238Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:03:05.255Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: cookie is not defined"},"timestamp":"2023-12-17T17:05:16.079Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:05:16.086Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: token is not defined"},"timestamp":"2023-12-17T17:11:26.459Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:11:26.466Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: token is not defined"},"timestamp":"2023-12-17T17:12:42.195Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:12:42.203Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: token is not defined"},"timestamp":"2023-12-17T17:14:04.980Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:14:04.993Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: token is not defined"},"timestamp":"2023-12-17T17:18:21.492Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:18:21.503Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: token is not defined"},"timestamp":"2023-12-17T17:24:11.798Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:24:11.810Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected undefined to be an object"},"timestamp":"2023-12-17T17:29:12.024Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:29:12.036Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected undefined to be an object"},"timestamp":"2023-12-17T17:31:35.897Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:31:35.909Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected 401 to equal 200"},"timestamp":"2023-12-17T17:36:00.675Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:36:00.687Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected 401 to equal 200"},"timestamp":"2023-12-17T17:39:13.355Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:39:13.364Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected 401 to equal 200"},"timestamp":"2023-12-17T17:43:26.968Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:43:26.978Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected 401 to equal 200"},"timestamp":"2023-12-17T17:45:33.228Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:45:33.241Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected 401 to equal 200"},"timestamp":"2023-12-17T17:49:43.655Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:49:43.668Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected 401 to equal 200"},"timestamp":"2023-12-17T17:53:39.838Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:53:39.848Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected 401 to equal 200"},"timestamp":"2023-12-17T17:56:52.043Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T17:56:52.051Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected 401 to equal 200"},"timestamp":"2023-12-17T18:00:00.020Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T18:00:00.036Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected 401 to equal 200"},"timestamp":"2023-12-17T18:01:00.668Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T18:01:00.678Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected undefined to be an object"},"timestamp":"2023-12-17T18:10:30.627Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T18:10:30.639Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected undefined to be an object"},"timestamp":"2023-12-17T18:14:03.011Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T18:14:03.020Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: AssertionError: expected undefined to be an object"},"timestamp":"2023-12-17T18:22:26.205Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T18:22:26.214Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: ReferenceError: token is not defined"},"timestamp":"2023-12-17T18:27:19.849Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T18:27:19.860Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: TypeError: Cannot read properties of undefined (reading 'value')"},"timestamp":"2023-12-17T18:29:44.583Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T18:29:44.594Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: TypeError: Cannot read properties of undefined (reading 'value')"},"timestamp":"2023-12-17T18:31:50.394Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T18:31:50.405Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: TypeError: Cannot read properties of undefined (reading 'value')"},"timestamp":"2023-12-17T18:33:59.517Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T18:33:59.527Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: TypeError: Cannot read properties of undefined (reading 'value')"},"timestamp":"2023-12-17T18:36:18.239Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T18:36:18.250Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: TypeError: Cannot read properties of undefined (reading 'value')"},"timestamp":"2023-12-17T18:39:05.386Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-17T18:39:05.394Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un nuevo carrito: ReferenceError: cookie is not defined"},"timestamp":"2023-12-17T18:40:30.239Z"}
+{"level":"error","message":{"error":"Error al cargar productos en el carrito: ReferenceError: cookie is not defined"},"timestamp":"2023-12-17T18:40:30.252Z"}
+{"level":"error","message":{"error":"Error al comprar el carrito: ReferenceError: cookie is not defined"},"timestamp":"2023-12-17T18:40:30.258Z"}
+{"level":"error","message":"users validation failed: age: Path `age` is required.","timestamp":"2023-12-17T18:47:17.444Z"}
+{"level":"error","message":{"error":"Error al hacer test para registrar un usuario: AssertionError: expected { Object (_events, _eventsCount, ...) } to equal 200"},"timestamp":"2023-12-17T18:47:19.719Z"}
+{"level":"error","message":{"error":"Error al hacer test para iniciar sessión con un usuario: AssertionError: expected undefined to equal 'Inicio de session exitoso'"},"timestamp":"2023-12-17T18:47:20.675Z"}
+{"level":"error","message":{"error":"Error al hacer test para cerra la sessión del usuario: AssertionError: expected 'Ha finalizado la sessión' to equal 'Sesión cerrada con éxito'"},"timestamp":"2023-12-17T18:47:20.683Z"}
+{"level":"error","message":"users validation failed: age: Path `age` is required.","timestamp":"2023-12-17T18:49:35.905Z"}
+{"level":"error","message":{"error":"Error al hacer test para registrar un usuario: AssertionError: expected 500 to equal 200"},"timestamp":"2023-12-17T18:49:38.161Z"}
+{"level":"error","message":{"error":"Error al hacer test para iniciar sessión con un usuario: AssertionError: expected undefined to equal 'Inicio de session exitoso'"},"timestamp":"2023-12-17T18:49:38.978Z"}
+{"level":"error","message":{"error":"Error al hacer test para cerra la sessión del usuario: AssertionError: expected 'Ha finalizado la sessión' to equal 'Sesión cerrada con éxito'"},"timestamp":"2023-12-17T18:49:38.992Z"}
+{"level":"error","message":"users validation failed: age: Path `age` is required.","timestamp":"2023-12-17T18:52:50.166Z"}
+{"level":"error","message":{"error":"Error al hacer test para registrar un usuario: AssertionError: expected 500 to equal 200"},"timestamp":"2023-12-17T18:52:50.251Z"}
+{"level":"error","message":{"error":"Error al hacer test para iniciar sessión con un usuario: AssertionError: expected undefined to equal 'Inicio de session exitoso'"},"timestamp":"2023-12-17T18:52:52.652Z"}
+{"level":"error","message":{"error":"Error al hacer test para cerra la sessión del usuario: AssertionError: expected 'Ha finalizado la sessión' to equal 'Sesión cerrada con éxito'"},"timestamp":"2023-12-17T18:52:52.659Z"}
