@@ -145,11 +145,11 @@ const upload = multer({ storage: storage});
 
 const determineFolder = (fieldName) => {
     if(fieldName === 'profile'){
-        return 'documents/profiles;'
+        return 'documents/profiles';
     } else if( fieldName === 'productsImg'){
-        return 'documents/productsImg'
+        return 'documents/productsImg';
     } else if( fieldName === 'tickets'){
-        return 'documents/tickets'
+        return 'documents/tickets';
     } else{
         return 'documents'
     }
