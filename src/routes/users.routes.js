@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { github, githubSession, login, logout, register, viewLogin, viewRegister, passwordRecovery, resetPassword, uploadDocuments} from "../controllers/users.controller.js";
+import { github, githubSession, login, logout, register, viewLogin, viewRegister, passwordRecovery, resetPassword, uploadDocuments, upload} from "../controllers/users.controller.js";
 import { passportError, authorization } from "../utils/messageErrors.js";
 
 
