@@ -1,6 +1,17 @@
 import { Schema, model } from "mongoose";
 import cartModel from "./carts.models.js";
 
+const documentSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    reference: {
+        type: String,
+        required: true
+    }
+});
+
 const userSchema = new Schema({
     first_name: {
         type: String,
@@ -34,7 +45,11 @@ const userSchema = new Schema({
     cart: {
         type: Schema.Types.ObjectId,
             ref: 'carts'
-    }
+    },
+    document: [documentSchema],
+    last_connection: {
+        type: Date
+    },
 });
 
 userSchema.pre('save', async function (next){

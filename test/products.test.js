@@ -50,6 +50,8 @@ await mongoose.connect(process.env.URL_MONGO)
                     logger.error("Error en la sección before:", error);
                     throw error;
                 }
+
+                
                  
             });
     });

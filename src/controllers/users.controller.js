@@ -3,6 +3,8 @@ import logger from "../utils/logger.js";
 import crypto from "crypto";
 import bcrypt from 'bcrypt';
 import recoveryEmail from "../config/nodemailer.js";
+import multer from "multer";
+import path from "path";
 
 export const viewRegister = async (req, res) => {
     res.render('register');
@@ -125,4 +127,49 @@ export const logout = async (req, res) => {
     }
     res.clearCookie('jwtCookie');
     res.status(200).send({ resultado: 'OK', message: 'Ha finalizado la sessión'});
+}
+
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) =>{
+        const folder = determineFolder(file.fieldname);
+        cb(null, `./uploads/${folder}`);
+    },
+    filename: (req, file, cb) => {
+        const filename = `${Date.now()}-${file.originalname}`;
+        cb(null, filename);
+    }
+});
+
+const upload = multer({ storage: storage});
+
+const determineFolder = (fieldName) => {
+    if(fieldName === 'profile'){
+        return 'documents/profiles;'
+    } else if( fieldName === 'productsImg'){
+        return 'documents/productsImg'
+    } else if( fieldName === 'tickets'){
+        return 'documents/tickets'
+    } else{
+        return 'documents'
+    }
+};
+
+export { upload }; 
+
+export const uploadDocuments = async (req, res) =>{
+    try{
+        const userID = req.params.uid 
+        const documents = req.files.map((file) => ({
+            name: file.originalname,
+            reference: `/uploads/${file.filename}`,
+        }));
+
+        await User.findByIdAndUpdate(userID, { $push: { documents: { $each: documents } } });
+        res.status(200).send({respuesta: 'OK', message: 'Documentos subidos exitosamente.' });
+    }catch(error){
+        logger.error(` Error al cargar los documentos `);
+        res.status(500).send({message: `Error al cargar los documentos ${error}`});
+
+}
 }

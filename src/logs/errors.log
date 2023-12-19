@@ -160,3 +160,5 @@
 {"level":"error","message":{"error":"Error al hacer test para registrar un usuario: AssertionError: expected undefined to equal 'Usuario creado satisfactoriamente'"},"timestamp":"2023-12-17T19:05:44.885Z"}
 {"level":"error","message":{"error":"Error al hacer test para iniciar sessión con un usuario: AssertionError: expected undefined to equal 'Inicio de session exitoso'"},"timestamp":"2023-12-17T19:05:47.378Z"}
 {"level":"error","message":{"error":"Error al hacer test para cerra la sessión del usuario: AssertionError: expected 'Ha finalizado la sessión' to equal 'Sesión cerrada con éxito'"},"timestamp":"2023-12-17T19:05:47.385Z"}
+{"level":"error","message":{"error":"Error al hacer test para crear un producto: TypeError: Cannot read properties of undefined (reading 'value')"},"timestamp":"2023-12-18T23:25:43.349Z"}
+{"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-18T23:25:43.357Z"}
