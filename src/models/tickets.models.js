@@ -13,6 +13,10 @@ const ticketSchema = new Schema({
     purchaser: {
         type: String,
         required: true
+    },
+    purchase_datetime: {
+        type: Date,
+        required: true
     }
 });
 

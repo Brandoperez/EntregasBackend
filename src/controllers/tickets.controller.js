@@ -1,9 +1,11 @@
 import ticketModel from "../models/tickets.models.js";
 import logger from "../utils/logger.js"
 import { v4 as uuidv4 } from 'uuid';
+import { sendTicket } from "../config/nodemailer.js";
 
 export const createTickets = async ( req, res ) =>{
     const {amount, email} = req.query;
+    let code;
         try{
             if(amount <= 0){
                 res.status(400).send({error: 'No se pudo generar el ticket, el monto debe ser mayor a 0'});
@@ -11,13 +13,21 @@ export const createTickets = async ( req, res ) =>{
             if(!email){
                 res.status(400).send({error: 'No se pudo generar el ticket, debe ingresar un email'});
             }
+
             code = uuidv4();
-            const ticket = await ticketModel.create({
-                code,
-                amount,
+            const purchase_datetime = new Date();
+
+            const ticket = {
+                code: code,
+                amount: amount,
                 purchaser: email,
-            });
-                res.status(200).send({ message: "El ticket se generó correctamente", ticket});
+                purchase_datetime: purchase_datetime
+            }
+                await ticketModel.create(ticket);
+                sendTicket(req, res, {
+                    ticket
+                });
+
         }catch(error){
             logger.error(`Error al generar ticket: ${error}`);
             res.status(500).send({ error: `Error al crear el ticket ${error}`});

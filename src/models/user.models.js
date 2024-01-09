@@ -1,16 +1,7 @@
 import { Schema, model } from "mongoose";
 import cartModel from "./carts.models.js";
 
-const documentSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    reference: {
-        type: String,
-        required: true
-    }
-});
+
 
 const userSchema = new Schema({
     first_name: {
@@ -31,7 +22,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    rol: {
+    role: {
         type: String,
         enum: ['admin', 'user'],
         default: function () {
@@ -46,9 +37,13 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
             ref: 'carts'
     },
-    document: [documentSchema],
+    documents: [{
+        type: String,
+        ref: 'documents'
+    }],
     last_connection: {
-        type: Date
+        type: Date,
+        default: Date.now()
     },
 });
 

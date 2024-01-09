@@ -55,6 +55,7 @@ export const addProducts = async (req, res) => {
         validateProductRequired({ title, price, category });
 
         const confirmacion = await productsModel.create({ title, description, price, category, stock, code, thumbnails });
+        logger.info('Producto creado con éxito');
         res.status(200).send({ resultado: 'OK', message: confirmacion});
     }catch(error){
         logger.error(`Error a crear un nuevo producto`);
@@ -86,9 +87,11 @@ export const updateProducts = async (req, res ) =>{
         
         const confirmacion = productsModel.findByIdAndUpdate(id, {title, description, price, category, stock, code, status});
             if(confirmacion){
-                res.status(200).send({ resultado: 'OK', message: confirmacion});
+                logger.info('Producto actualizado')
+                res.status(200).send({ resultado: 'OK', message: 'Producto actualizado'});
             }else{
-                res.status(404).send({ resultado: 'Producto no encontrado', confirmacion});
+                logger.error('No se pudo encontrar el producto')
+                res.status(404).send({ error: `Producto no encontrado ${id}`});
             }
     }catch(error){
         logger.error(`Error al actualizar el producto`);
@@ -102,9 +105,11 @@ export const deleteProducts = async (req, res) =>{
     try{
         const confirmacion = await productsModel.findByIdAndDelete(id);
             if(confirmacion){
-                res.status(200).send({ resultado: 'OK', confirmacion});
+                logger.info('Producto eliminado')
+                res.status(200).send({ resultado: 'OK', message: 'Producto elimando con éxito'});
             }else{
-                res.status(404).send({ resultado: 'Producto no encontrado', confirmacion});
+                logger.error('No se pudo encontrar el producto')
+                res.status(404).send({ error: `Producto no encontrado ${id}`});
             }
     }catch(error){
         logger.error(`Error al eliminar el producto`);

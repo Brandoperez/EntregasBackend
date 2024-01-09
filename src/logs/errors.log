@@ -162,3 +162,58 @@
 {"level":"error","message":{"error":"Error al hacer test para cerra la sessión del usuario: AssertionError: expected 'Ha finalizado la sessión' to equal 'Sesión cerrada con éxito'"},"timestamp":"2023-12-17T19:05:47.385Z"}
 {"level":"error","message":{"error":"Error al hacer test para crear un producto: TypeError: Cannot read properties of undefined (reading 'value')"},"timestamp":"2023-12-18T23:25:43.349Z"}
 {"level":"error","message":"Error al hacer test para actualizar un producto: ReferenceError: getProductCreated is not defined","timestamp":"2023-12-18T23:25:43.357Z"}
+{"level":"error","message":"Error al registrar usuario: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","timestamp":"2024-01-02T22:33:42.615Z"}
+{"level":"error","message":"Error al registrar usuario: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","timestamp":"2024-01-02T22:49:36.721Z"}
+{"level":"error","message":"Error al registrar usuario: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","timestamp":"2024-01-02T22:54:27.414Z"}
+{"level":"error","message":"Unexpected token } in JSON at position 64","timestamp":"2024-01-02T23:08:05.332Z"}
+{"level":"error","message":"Error al enviar el correo Error: Missing credentials for \"PLAIN\"","timestamp":"2024-01-02T23:54:36.811Z"}
+{"level":"error","message":"Error al enviar el correo Error: Missing credentials for \"PLAIN\"","timestamp":"2024-01-03T00:02:54.056Z"}
+{"level":"error","message":"Error al resetear la contraseña: ReferenceError: error is not defined","timestamp":"2024-01-03T00:05:00.926Z"}
+{"level":"error","message":"error is not defined","timestamp":"2024-01-03T00:05:00.938Z"}
+{"level":"error","message":"Error al enviar el correo Error: Missing credentials for \"PLAIN\"","timestamp":"2024-01-03T21:03:07.682Z"}
+{"level":"error","message":"Error al resetear la contraseña: ReferenceError: error is not defined","timestamp":"2024-01-03T21:06:14.912Z"}
+{"level":"error","message":"error is not defined","timestamp":"2024-01-03T21:06:14.915Z"}
+{"_message":"users validation failed","errors":{"first_name":{"kind":"required","message":"Path `first_name` is required.","name":"ValidatorError","path":"first_name","properties":{"message":"Path `first_name` is required.","path":"first_name","type":"required"}}},"level":"error","timestamp":"2024-01-03T21:10:56.317Z"}
+{"level":"error","message":"users validation failed: first_name: Path `first_name` is required.","timestamp":"2024-01-03T21:10:56.319Z"}
+{"level":"error","message":"ENOENT: no such file or directory, open 'C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\controllers\\public\\documents\\1704331261322-01.jpg'","timestamp":"2024-01-04T01:21:01.328Z"}
+{"level":"error","message":" Error al cargar los documentos ","timestamp":"2024-01-04T01:23:28.206Z"}
+{"level":"error","message":" Error al cargar los documentos ","timestamp":"2024-01-04T01:24:48.736Z"}
+{"level":"error","message":" Error al cargar los documentos ","timestamp":"2024-01-04T01:45:03.508Z"}
+{"level":"error","message":" Error al cargar los documentos ","timestamp":"2024-01-04T01:55:04.167Z"}
+{"level":"error","message":" Error al cargar los documentos ","timestamp":"2024-01-04T01:55:33.688Z"}
+{"level":"error","message":" Error al cargar los documentos ","timestamp":"2024-01-04T02:01:12.967Z"}
+{"level":"error","message":" Error al cargar los documentos ","timestamp":"2024-01-04T02:06:51.529Z"}
+{"level":"error","message":" Error al cargar los documentos ","timestamp":"2024-01-04T02:09:14.923Z"}
+{"level":"error","message":" Error al cargar los documentos ","timestamp":"2024-01-04T02:12:34.237Z"}
+{"level":"error","message":" Error al cargar los documentos ","timestamp":"2024-01-04T02:13:31.091Z"}
+{"level":"error","message":" Error al cargar los documentos ","timestamp":"2024-01-04T02:14:51.092Z"}
+{"level":"error","message":" Error al cargar los documentos ","timestamp":"2024-01-04T02:18:55.499Z"}
+{"level":"error","message":" Error al cargar los documentos ","timestamp":"2024-01-04T02:20:58.570Z"}
+{"level":"error","message":"Error al consultar el producto","timestamp":"2024-01-04T23:19:51.211Z"}
+{"level":"error","message":"Error al actualizar el producto","timestamp":"2024-01-05T00:24:47.311Z"}
+{"level":"error","message":"Error al actualizar el producto","timestamp":"2024-01-05T00:34:06.460Z"}
+{"level":"error","message":"Error al obtener el carrito StrictPopulateError: Cannot populate path `products.product` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2024-01-06T12:39:01.730Z"}
+{"level":"error","message":"Error al obtener el carrito CastError: Cast to ObjectId failed for value \":6595c977f0d554f7f95b2b55\" (type string) at path \"_id\" for model \"carts\"","timestamp":"2024-01-06T12:39:18.007Z"}
+{"level":"error","message":"Error al obtener el carrito StrictPopulateError: Cannot populate path `products.product` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2024-01-06T12:39:27.834Z"}
+{"level":"error","message":"Error al obtener el carrito StrictPopulateError: Cannot populate path `products.product` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2024-01-06T12:40:02.652Z"}
+{"level":"error","message":"Error al actualizar el producto del carrito","timestamp":"2024-01-06T12:52:29.612Z"}
+{"level":"error","message":"Error al actualizar el producto del carrito","timestamp":"2024-01-06T13:01:25.968Z"}
+{"level":"error","message":"Error al actualizar el carrito TypeError: Cannot read properties of undefined (reading 'forEach')","timestamp":"2024-01-08T20:58:53.769Z"}
+{"level":"error","message":"Error al actualizar el carrito TypeError: UpdateProduct.forEach is not a function","timestamp":"2024-01-08T21:07:18.149Z"}
+{"level":"error","message":"Error al actualizar el carrito TypeError: UpdateProduct.forEach is not a function","timestamp":"2024-01-08T21:07:52.326Z"}
+{"level":"error","message":"Error al actualizar el carrito TypeError: Cannot read properties of undefined (reading 'forEach')","timestamp":"2024-01-08T21:08:40.893Z"}
+{"level":"error","message":"Error al generar ticket: ReferenceError: code is not defined","timestamp":"2024-01-08T23:15:56.603Z"}
+{"level":"error","message":"Error al generar ticket: ReferenceError: code is not defined","timestamp":"2024-01-08T23:18:24.976Z"}
+{"level":"error","message":"Error al generar ticket: ReferenceError: code is not defined","timestamp":"2024-01-08T23:24:02.276Z"}
+{"level":"error","message":"Error al generar ticket: ValidationError: purcharse_datetime: Path `purcharse_datetime` is required.","timestamp":"2024-01-08T23:26:54.476Z"}
+{"level":"error","message":"Error al generar ticket: ValidationError: purcharse_datetime: Path `purcharse_datetime` is required.","timestamp":"2024-01-08T23:28:35.632Z"}
+{"level":"error","message":"Error al generar ticket: ReferenceError: sendTicket is not defined","timestamp":"2024-01-08T23:30:20.681Z"}
+{"level":"error","message":"Error al generar ticket: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","timestamp":"2024-01-08T23:36:22.580Z"}
+{"level":"error","message":"Error al enviar el ticket Error: Missing credentials for \"PLAIN\"","timestamp":"2024-01-08T23:40:35.595Z"}
+{"level":"error","message":"Error al eliminar el producto del carrito TypeError: Cannot read properties of undefined (reading 'filter')","timestamp":"2024-01-08T23:53:19.098Z"}
+{"level":"error","message":"Error al eliminar el producto del carrito TypeError: Cannot read properties of undefined (reading 'filter')","timestamp":"2024-01-08T23:56:19.311Z"}
+{"level":"error","message":"Error al eliminar el producto del carrito TypeError: cart.save is not a function","timestamp":"2024-01-08T23:58:39.508Z"}
+{"level":"error","message":"Error al eliminar el producto del carrito TypeError: cart.save is not a function","timestamp":"2024-01-08T23:59:56.591Z"}
+{"level":"error","message":"Error al eliminar el producto del carrito TypeError: cart.save is not a function","timestamp":"2024-01-09T00:01:05.816Z"}
+{"level":"error","message":"Error al eliminar el producto del carrito TypeError: Cannot read properties of undefined (reading 'findIndex')","timestamp":"2024-01-09T00:05:29.728Z"}
+{"level":"error","message":"Error al eliminar el producto del carrito TypeError: Cannot read properties of undefined (reading 'findIndex')","timestamp":"2024-01-09T00:07:52.929Z"}

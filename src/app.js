@@ -22,7 +22,7 @@ import initializarPassport from './config/passport.js';
 
 
 const app = Express();
-const PORT = 4000;
+const PORT = 3000;
 
 const swaggerOptions = {
     definition: {
@@ -44,12 +44,14 @@ mongoose.connect(process.env.URL_MONGO)
     .catch((error) => logger.error("Error en conexión a mongoDB atlas: ", error));
 
 
+    
 //SERVER
 const server = app.listen(PORT, () =>{
     logger.info("Servidor funcionando");
 });
 
 const io = new Server(server);
+
 
 
 //MIDDLEWARES
@@ -69,6 +71,7 @@ app.use(session({
         resave: true,
         saveUninitialized: true
 }));
+
 initializarPassport();
 app.use(passport.initialize());
 app.use(passport.session());
@@ -86,6 +89,8 @@ io.on("connection", (socket) => {
     }); 
 
 });
+
+
 
 app.use("/static", Express.static(path.join(__dirname, "/public")));
 

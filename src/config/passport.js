@@ -4,6 +4,7 @@ import GithubStrategy from "passport-github2";
 import jwt from "passport-jwt"
 import { createHash, validatePassword } from "../utils/bcrypt.js"; 
 import { userModel } from "../models/user.models.js";
+import logger from '../utils/logger.js';
 
 const LocalStrategy = local.Strategy;
 const JWTStrategy = jwt.Strategy;
@@ -13,19 +14,24 @@ const ExtractJWT = jwt.ExtractJwt ;
 const initializarPassport = () => {
 
     const cookieExtractor = req => {
-        console.log(req.cookies);
-        const token = req.cookies ? req.cookies.jwtCookie : {};
-        console.log(token);
+        logger.info(req.cookies);
+        const token = req.cookies ? req.cookies.jwtCookie : {}
         return token;
     }
+        const { fromAuthHeaderAsBearerToken } = ExtractJWT;
+
     passport.use('jwt', new JWTStrategy({
-        jwtFromRequest: ExtractJWT.fromExtractors([cookieExtractor]),
+        jwtFromRequest: ExtractJWT.fromExtractors([cookieExtractor, fromAuthHeaderAsBearerToken]),
         secretOrKey: process.env.JWT_SECRET
     }, async (jwt_playload, done) => {
         try{
-            console.log(jwt_playload)
-            return done(null, jwt_playload);
+            const user = await userModel.findById(jwt_playload.user._id);
+                if(!user){
+                    return(done, false)
+                }
+                    return done(null, user);
         }catch(error){
+            logger.error(error);
             return done(error);
         }
     }));
@@ -39,6 +45,7 @@ const initializarPassport = () => {
                 try{
                     const user = await userModel.findOne({ email: email});
                         if(user){
+                            logger.info('Usuario Existente')
                             return done(null, false);
                         }
                         const hashedPassword = createHash(password);
@@ -49,10 +56,11 @@ const initializarPassport = () => {
                             password: hashedPassword,
                             age
                         })
-                        console.log(resultado);
+                        logger.info(resultado);
                         return done(null, resultado);
 
                 }catch(error){
+                    logger.error(error)
                     return done(error);
                 }
         }
@@ -64,12 +72,15 @@ const initializarPassport = () => {
             const user = await userModel.findOne({ email: username});
 
                 if(!user){
+                    logger.info('Usuario No encontrado')
                     return done(null, false);
                 }
                 if(validatePassword(password, user.password)){
+                    logger.info('Usuario y contraseña correctos')
                     return done(null, user);
                 }
         }catch(error){
+            logger.error(error);
             return done(error);
         }
     }));
@@ -80,24 +91,24 @@ const initializarPassport = () => {
         callbackURL: process.env.CALLBACK_URL
     }, async (accessToken, refreshToken, profile, done) =>{
         try{
-             console.log(accessToken),
-             console.log(refreshToken),
-             console.log(process.env.CALLBACK_URL)
-
              const user = await userModel.findOne({ email: profile._json.email });
                 if(!user){
+                    const password = createHash('password')
                     const createUser = await userModel.create({
                         first_name: profile._json.name,
                         last_name: " ",
                         email: profile._json.email,
                         age: 18,
-                        password: 'password'
+                        password: password
                     }) 
+                    logger.info('Usuario creado')
                      done(null, createUser);
                 }else{
+                    logger.info('Usuario existente')
                     done(null, user);
                 }
         }catch(error){
+            logger.error(error)
              done(error);
         }
     }));

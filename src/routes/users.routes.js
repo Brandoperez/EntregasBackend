@@ -1,23 +1,16 @@
 import { Router } from "express";
-import { github, githubSession, login, logout, register, viewLogin, viewRegister, passwordRecovery, resetPassword, uploadDocuments, upload} from "../controllers/users.controller.js";
-import { passportError, authorization } from "../utils/messageErrors.js";
-
-
+import { getUser, passwordRecovery, resetPassword, deleteUser, deleteUserInactive, uploadDocuments, upload} from "../controllers/users.controller.js";
+import { authorization } from "../utils/messageErrors.js";
 import passport  from "passport";
 
 const routerUser = Router();
 
-
-routerUser.get('/register', viewRegister);
-routerUser.post('/register', passport.authenticate('register'), register);
+routerUser.get('/', passport.authenticate('jwt', { session: false }), getUser);
 routerUser.post('/passwordRecovery', passwordRecovery);
 routerUser.post('/resetPassword/:token', resetPassword);
-routerUser.get('/login', viewLogin)
-routerUser.post('/login', passport.authenticate('login'), login)
-routerUser.get('/github', passport.authenticate('github', {scope: ['user:email']}), github);
-routerUser.get('/githubSession', passport.authenticate('github'), githubSession);
-routerUser.get('/logout', logout)
-routerUser.post('/:uid/documents', upload.array('files'), uploadDocuments);
+routerUser.delete('/', passport.authenticate('jwt', { session: false }), authorization(['admin']), deleteUserInactive);
+routerUser.delete('/:id',passport.authenticate('jwt', { session: false }), authorization(['admin']), deleteUser );
+routerUser.post('/:uid/documents', passport.authenticate('jwt', { session: false }), authorization(['admin']), upload.fields([{ name: 'documents' }]), uploadDocuments);
 
 routerUser.get('/testJWT', passport.authenticate('jwt', { session: true }), async (req, res) =>{
     res.status(200).send({ mensaje: req.user});
@@ -30,9 +23,6 @@ routerUser.get('/testJWT', passport.authenticate('jwt', { session: true }), asyn
     }
 });
 
-routerUser.get('/current', passportError('jwt'), authorization('user'), (req, res) =>{
-    res.send(req.user);
-})
 
 
 
