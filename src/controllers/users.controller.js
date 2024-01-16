@@ -1,7 +1,7 @@
 import { userModel } from "../models/user.models.js";
 import logger from "../utils/logger.js";
+import { createHash, validatePassword } from '../utils/bcrypt.js';
 import crypto from "crypto";
-import bcrypt from "bcrypt";
 import { recoveryEmail, sendAccountDeletion } from "../config/nodemailer.js";
 import multer from "multer";
 import path from "path";
@@ -11,11 +11,7 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 
 const recoveryLinks = {};
-const RESET_PASSWORD_URL = "http://localhost:4000/api/users/reset-password/";
-const generateToken = () => crypto.randomBytes(20).toString("hex");
-const storeRecoveryToken = (token, email) => {
-  recoveryLinks[token] = { email, timestamp: Date.now() };
-};
+const RESET_PASSWORD_URL = "http://localhost:3000/api/users/resetPassword/";
 
 export const passwordRecovery = async (req, res) => {
   const { email } = req.body;
@@ -27,63 +23,65 @@ export const passwordRecovery = async (req, res) => {
       return res.status(400).send({ error: `Usuario no encontrado ${email}` });
     }
 
-    const token = generateToken();
-    storeRecoveryToken(token, email);
+    const token = crypto.randomBytes(20).toString("hex");
+    recoveryLinks[token] = { email, timestamp: Date.now() };
     logger.info(`Token generado para ${email}: ${token}`);
+    console.log("recoveryLinks después de agregar el token:", recoveryLinks);
 
-    let recoveryLink = `${RESET_PASSWORD_URL}${token}`;
+    const recoveryLink = `${RESET_PASSWORD_URL}${token}`;
     recoveryEmail(email, recoveryLink);
-    res
-      .status(200)
-      .send({
-        resultado: "OK",
-        message: "El correo electrónico fué enviado correctamente.",
-      });
+    res.status(200).send({ resultado: "OK", message: "El correo electrónico fué enviado correctamente.",});
   } catch (error) {
     logger.error(`Error al enviar el mail de recuperación: ${error}`);
-    res
-      .status(500)
-      .send({ error: `Error al enviar el mail de recuperación ${error}` });
+    res.status(500).send({ error: `Error al enviar el mail de recuperación ${error}` });
   }
 };
 
 export const resetPassword = async (req, res, next) => {
+    const { token } = req.params;
+    const { newPassword } = req.body;
+
   try {
-    const user = await userModel.findOne({
-      passwordResetToken: req.params.token,
-      passwordResetExpired: { $gt: Date.now() },
-    });
-    if (!user) {
-      logger.error(
-        `No se puso reestablecer la contraseña, token invalido o expirado. ${error}`
-      );
-      return res.status(400).send({ error: "Token inavlido o expirado" });
-    }
+    const linkToken = recoveryLinks[token];
+      if(!linkToken){
+        logger.error(`Token no encontrado ${token}`);
+        return res.status(400).send({ error: `Token no encontrado: ${token}` });
+      }
+        const now = Date.now();
+        const tokenTimestamp = linkToken.timestamp;
+        const tokenAge = now - tokenTimestamp;
 
-    const newPassword = req.body.password;
-    const oldPassword = await bcrypt.compare(newPassword, user.password);
+        if (tokenAge > process.env.TOKEN_EXPIRATION_TIME) {
+          logger.error(`Token expirado: ${token}`);
+          return res.status(400).send({ error: `Token expirado: ${token}` });
+      }
+        const {email} = linkToken;
+        try{
+          const user = await userModel.findOne({ email });
+          if(!user){
+            logger.error(`Usuario no encontrado ${email}`);
+            return res.status(400).send({ error: `Usuario no encontrado: ${email}` });
+          }
 
-    if (oldPassword) {
-      return res
-        .status(400)
-        .send({
-          error: `La contraseña no puede ser igual a la anterior, ingresa una nueva contraseña`,
-        });
-    }
+            const isSamePassword = validatePassword(newPassword, user.password);
 
-    user.password = await bcrypt.hash(newPassword, 12);
-    user.passwordResetToken = undefined;
-    user.passwordResetExpired = undefined;
-    await user.save();
-    res
-      .status(200)
-      .send({
-        resultado: "OK",
-        message: "Contraseña restablecida correctamente",
-      });
+              if(isSamePassword){
+                logger.error(`La nueva contraseña no puede ser igual a la anterior`);
+                return res.status(400).send({ error: `La nueva contraseña no puede ser igual a la anterior` });
+              }
+              user.password = createHash(newPassword);
+              await user.save()
+
+              delete recoveryLinks[token];
+              logger.info(`Password actualizado correctamente para el usuario ${email}`);
+              return res.status(200).send({ resultado: 'OK', message: 'Password actualizado correctamente' });
+        }catch(error){
+          logger.error(`Error al modificar contraseña: ${error}`);
+          return res.status(500).send({ error: `Error al modificar contraseña: ${error}` });
+        }
   } catch (error) {
-    logger.error(`Error al resetear la contraseña: ${error}`);
-    next(error);
+        logger.error(`Error al actualizar password: ${error}`);
+        return res.status(500).send({ error: `Error al actualizar password: ${error}` });
   }
 };
 

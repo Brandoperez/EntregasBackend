@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos-Crear</title>
+</head>
+<body>
+    <div class="container mt-4">
+  <div class="card p-4 shadow">
+    <h1 class="text-center mb-4">Agregar Nuevo Producto</h1>
+
+    <form method="post" action="/products">
+      <div class="form-group">
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description" class="form-control" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Precio:</label>
+        <input type="number" id="price" name="price" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="category">Categoría:</label>
+        <input type="text" id="category" name="category" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="code">Código:</label>
+        <input type="text" id="code" name="code" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="thumbnails">Imágenes (separadas por comas):</label>
+        <input type="text" id="thumbnails" name="thumbnails" class="form-control">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Agregar Producto</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

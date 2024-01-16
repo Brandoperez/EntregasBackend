@@ -12,20 +12,29 @@ export const getProducts = async (req, res) =>{
         const opciones = {
             limit: parseInt(limit),
             page: parseInt(page),
-            sort: sort === 'asc' ? {price: 1} : sort === 'desc' ? {price: -1} : null
+            sort: sort === 'asc' ? {price: 1} : sort === 'desc' ? {price: -1} : null,
+            lean: true
         }
         const filter = {}
         if(query){
             filter.type = query
         }
         if(category){
-            filter.type = category
+            filter.category = category
         }
         if(status){
-            filter.type = status
+            filter.status = status
         }
+
         const prods = await productsModel.paginate(filter, opciones);
-        res.status(200).send({ resultado: 'OK', message: prods});
+        res.render('home', {
+                products: prods.docs,
+                hasPrevPage: prods.hasPrevPage,
+                hasNetxPage: prods.hasNextPage,
+                prevPage: prods.prevPage,
+                netxPage: prods.nextPage
+        })
+        //res.status(200).send({ resultado: 'OK', message: prods});
     }catch(error){
         logger.error(`Error al consultar los productos`);
         res.status(500).send({ error: `Error al consultar los productos: ${error}`});

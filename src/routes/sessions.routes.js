@@ -5,6 +5,9 @@ import { register, login, github, githubSession, logout} from "../controllers/se
 
 const routerSession = Router();
 
+routerSession.get('/register', (req, res) => {res.render('register');})
+routerSession.get('/login', (req, res) => {res.render('login');})
+
 routerSession.post('/register', passport.authenticate('register'), register);
 routerSession.post('/login', passport.authenticate('login'), login)
 routerSession.get('/github', passport.authenticate('github', {scope: ['user:email']}), github);

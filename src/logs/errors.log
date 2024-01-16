@@ -217,3 +217,35 @@
 {"level":"error","message":"Error al eliminar el producto del carrito TypeError: cart.save is not a function","timestamp":"2024-01-09T00:01:05.816Z"}
 {"level":"error","message":"Error al eliminar el producto del carrito TypeError: Cannot read properties of undefined (reading 'findIndex')","timestamp":"2024-01-09T00:05:29.728Z"}
 {"level":"error","message":"Error al eliminar el producto del carrito TypeError: Cannot read properties of undefined (reading 'findIndex')","timestamp":"2024-01-09T00:07:52.929Z"}
+{"level":"error","message":"Unexpected token } in JSON at position 48","timestamp":"2024-01-11T00:47:30.845Z"}
+{"level":"error","message":"Error al enviar el correo Error: connect ECONNREFUSED 127.0.0.1:465","timestamp":"2024-01-11T00:48:09.658Z"}
+{"level":"error","message":"Error al enviar el correo Error: connect ECONNREFUSED 127.0.0.1:465","timestamp":"2024-01-11T00:51:07.376Z"}
+{"level":"error","message":"Error al enviar el correo Error: connect ECONNREFUSED 127.0.0.1:465","timestamp":"2024-01-11T00:56:18.710Z"}
+{"level":"error","message":"Error al enviar el correo Error: connect ECONNREFUSED 127.0.0.1:587","timestamp":"2024-01-11T00:59:49.383Z"}
+{"level":"error","message":"Error al enviar el correo Error: connect ECONNREFUSED 127.0.0.1:465","timestamp":"2024-01-11T01:00:54.994Z"}
+{"level":"error","message":"Error al enviar el correo Error: connect ECONNREFUSED 127.0.0.1:465","timestamp":"2024-01-11T01:03:44.926Z"}
+{"level":"error","message":"Error al enviar el correo Error: connect ECONNREFUSED 127.0.0.1:465","timestamp":"2024-01-11T01:03:51.275Z"}
+{"level":"error","message":"Error al enviar el correo Error: Missing credentials for \"PLAIN\"","timestamp":"2024-01-11T01:05:11.952Z"}
+{"level":"error","message":"Error al enviar el correo Error: Invalid login: 534-5.7.9 Application-specific password required. For more information, go to\n534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor jf15-20020a170903268f00b001d3e6f58e5esm4275923plb.6 - gsmtp","timestamp":"2024-01-11T01:06:49.363Z"}
+{"level":"error","message":"Error al resetear la contraseña: ReferenceError: error is not defined","timestamp":"2024-01-11T23:20:02.974Z"}
+{"level":"error","message":"error is not defined","timestamp":"2024-01-11T23:20:02.988Z"}
+{"level":"error","message":"No se puso reestablecer la contraseña, token invalido o expirado.","timestamp":"2024-01-11T23:26:11.273Z"}
+{"level":"error","message":"Unexpected token } in JSON at position 50","timestamp":"2024-01-11T23:27:48.391Z"}
+{"level":"error","message":"No se puso reestablecer la contraseña, token invalido o expirado.","timestamp":"2024-01-11T23:28:57.196Z"}
+{"level":"error","message":"No se puso reestablecer la contraseña, token invalido o expirado.","timestamp":"2024-01-11T23:30:47.376Z"}
+{"level":"error","message":"No se puso reestablecer la contraseña, token invalido o expirado.","timestamp":"2024-01-11T23:40:35.976Z"}
+{"level":"error","message":"Error al enviar el mail de recuperación: ReferenceError: crypto is not defined","timestamp":"2024-01-12T00:03:16.976Z"}
+{"level":"error","message":"Error al actualizar password: TypeError: Cannot read properties of undefined (reading 'timestamp')","timestamp":"2024-01-12T00:05:46.430Z"}
+{"level":"error","message":"Error al actualizar password: TypeError: Cannot read properties of undefined (reading 'timestamp')","timestamp":"2024-01-12T00:26:37.154Z"}
+{"level":"error","message":"Token no encontrado 6358f92f917af15ddfb187c18a080de65f0ef765","timestamp":"2024-01-12T00:31:57.652Z"}
+{"level":"error","message":"Token no encontrado 6358f92f917af15ddfb187c18a080de65f0ef765","timestamp":"2024-01-12T00:42:23.330Z"}
+{"level":"error","message":"Error al modificar contraseña: Error: data and hash arguments required","timestamp":"2024-01-12T00:45:22.367Z"}
+{"level":"error","message":"Token no encontrado be978d7a6176db98c9f8374ec496fdb1e288d555","timestamp":"2024-01-12T00:47:16.915Z"}
+{"level":"error","message":"The partial main could not be found","timestamp":"2024-01-13T00:29:33.818Z"}
+{"level":"error","message":"The partial main could not be found","timestamp":"2024-01-13T00:33:11.146Z"}
+{"level":"error","message":"The partial main could not be found","timestamp":"2024-01-13T00:36:25.739Z"}
+{"level":"error","message":"The partial main could not be found","timestamp":"2024-01-13T00:36:45.586Z"}
+{"level":"error","message":"The partial main could not be found","timestamp":"2024-01-13T00:37:46.426Z"}
+{"level":"error","message":"The partial main could not be found","timestamp":"2024-01-13T00:37:48.877Z"}
+{"level":"error","message":"Error a crear un nuevo producto","timestamp":"2024-01-16T00:21:03.277Z"}
+{"level":"error","message":"Failed to lookup view \"home\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-16T00:29:56.078Z"}
