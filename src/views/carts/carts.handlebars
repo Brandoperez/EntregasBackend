@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="my-3 text-center">Carrito de Compras</h1>
+    <div class="row mt-4">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-body">
+           <h1>My cart</h1>
+
+              {{#if myCart.products.length}}
+              {{#each myCart.products}}
+              <div>
+                  <h2>{{this.id_prod.title}}</h2>
+                  <p>Price: ${{this.id_prod.price}}</p>
+                  <p>Quantity: {{this.quantity}}</p>
+              </div>
+              <p>cartId: {{myCart._id}}</p>
+              {{/each}}
+
+              <form action="/api/carts/purchase/{{cartId}}" method="post">
+                  <button id="buttonPurchase">Finalizar compra</button>
+              </form>
+
+              <form action="/api/products" method="get">
+                <div>
+                    <h2>¿Olvidaste algo? ¡Sigue comprando!</h2>
+                    <button>Ir a productos</button>
+                </div>
+              </form>
+              {{else}}
+              <p>No hay productos en el carrito</p>
+              {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

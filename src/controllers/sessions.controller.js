@@ -43,7 +43,7 @@ export const login = async (req, res) => {
     await userModel.findByIdAndUpdate(req.user._id, {
       last_connection: Date.now(),
     });
-    res.redirect('/productos');
+    res.redirect('/api/products');
     //res.status(200).send({ payload: req.user });
   } catch (error) {
     logger.error(`Error al iniciar sessión ${error}`);

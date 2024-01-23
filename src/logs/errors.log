@@ -249,3 +249,32 @@
 {"level":"error","message":"The partial main could not be found","timestamp":"2024-01-13T00:37:48.877Z"}
 {"level":"error","message":"Error a crear un nuevo producto","timestamp":"2024-01-16T00:21:03.277Z"}
 {"level":"error","message":"Failed to lookup view \"home\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-16T00:29:56.078Z"}
+{"level":"error","message":"Error al consultar el producto","timestamp":"2024-01-18T21:06:15.240Z"}
+{"level":"error","message":"Failed to lookup view \"home\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-18T21:09:39.851Z"}
+{"level":"error","message":"Error al consultar el producto","timestamp":"2024-01-18T21:16:09.775Z"}
+{"level":"error","message":"Error al consultar el producto","timestamp":"2024-01-18T21:16:29.138Z"}
+{"level":"error","message":"Error al consultar el producto","timestamp":"2024-01-18T21:22:07.957Z"}
+{"level":"error","message":"Error al consultar el producto","timestamp":"2024-01-18T21:28:18.759Z"}
+{"level":"error","message":"Error al consultar el producto","timestamp":"2024-01-18T21:29:24.081Z"}
+{"level":"error","message":"Failed to lookup view \"home\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-18T21:58:28.590Z"}
+{"level":"error","message":"Failed to lookup view \"home\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-18T21:58:28.932Z"}
+{"level":"error","message":"Failed to lookup view \"error\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-18T23:01:01.555Z"}
+{"level":"error","message":"Failed to lookup view \"editProducts\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-18T23:10:47.880Z"}
+{"level":"error","message":"Failed to lookup view \"editProducts\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-18T23:11:48.256Z"}
+{"level":"error","message":"Failed to lookup view \"editProducts\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-18T23:12:04.890Z"}
+{"level":"error","message":"Failed to lookup view \"error\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-19T00:01:48.324Z"}
+{"level":"error","message":"Failed to lookup view \"error\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-19T00:01:50.989Z"}
+{"level":"error","message":"Failed to lookup view \"error\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-19T00:02:23.154Z"}
+{"level":"error","message":"Failed to lookup view \"error\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-19T00:04:14.258Z"}
+{"level":"error","message":"Failed to lookup view \"error\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-19T00:04:27.060Z"}
+{"level":"error","message":"Failed to lookup view \"error\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-19T00:05:16.104Z"}
+{"level":"error","message":"Error al actualizar el producto","timestamp":"2024-01-19T00:21:33.550Z"}
+{"level":"error","message":"Error al actualizar el producto","timestamp":"2024-01-19T00:38:14.123Z"}
+{"level":"error","message":"Error al actualizar el producto","timestamp":"2024-01-19T00:41:37.363Z"}
+{"level":"error","message":"Error al actualizar el producto","timestamp":"2024-01-19T00:47:37.795Z"}
+{"level":"error","message":"Error al actualizar el producto","timestamp":"2024-01-19T00:51:15.925Z"}
+{"level":"error","message":"Failed to lookup view \"itemDetailProducts\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-19T13:23:30.222Z"}
+{"level":"error","message":"Error al consultar el producto","timestamp":"2024-01-19T14:00:56.668Z"}
+{"level":"error","message":"Failed to lookup view \"cart\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-19T14:25:05.732Z"}
+{"level":"error","message":"Failed to lookup view \"carts/cart\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-19T14:25:36.537Z"}
+{"level":"error","message":"Failed to lookup view \"carts/cart\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-19T14:25:41.553Z"}

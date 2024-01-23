@@ -56,6 +56,7 @@ const initializarPassport = () => {
                             password: hashedPassword,
                             age
                         })
+
                         logger.info(resultado);
                         return done(null, resultado);
 

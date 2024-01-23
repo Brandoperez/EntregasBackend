@@ -9,9 +9,9 @@
     <div class="container mt-4">
   {{#if message}}
     <div class="card p-4 shadow">
-      <h1 class="text-center mb-4">Editar Producto - {{message.title}}</h1>
+      <h1 class="text-center mb-4">Editar Producto  {{message.title}} </h1>
 
-      <form method="post" action="/products/{{message._id}}?_method=put">
+      <form id="productForm" method="post" action="/api/products/{{message._id}}?_method=put">
         <div class="form-group">
           <label for="title">Título:</label>
           <input type="text" id="title" name="title" class="form-control" value="{{message.title}}" required>
@@ -45,7 +45,7 @@
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
       </form>
       
-       <form method="post" action="/products/{{message._id}}?_method=delete" class="mt-3">
+       <form method="post" action="/api/products/{{message._id}}?_method=delete" class="mt-3">
         <button type="submit" class="btn btn-danger">Eliminar Producto</button>
       </form>
     </div>
@@ -53,5 +53,35 @@
     <p>No se encontró el producto.</p>
   {{/if}}
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const successMessage = urlParams.get('successMessage');
+
+    if (successMessage) {
+        Swal.fire({
+            icon: 'success',
+            title: '¡Éxito!',
+            text: successMessage,
+        }).then(() => {
+            // Redirige a la página de edición de productos solo si hay éxito
+            window.location.replace('/api/products');
+        });
+    }
+    
+    const deleteMessage = urlParams.get('deleteMessage');
+    if (deleteMessage) {
+        Swal.fire({
+            icon: 'success',
+            title: '¡Éxito!',
+            text: deleteMessage,
+        }).then(() => {
+            window.location.replace('/api/products');
+        });
+    }
+});
+</script>
+
 </body>
 </html>

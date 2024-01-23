@@ -31,9 +31,16 @@ export const getCarts = async (req, res) =>{
 export const getCartById = async (req, res) => {
     
     try{
-        const { cid } = req.params;
-        const cart = await cartsModel.findOne({ _id: cid}).populate('products.id_prod');
-        cart ? res.status(200).send({ respuesta: 'OK', message: cart}) : res.status(404).send({error: 'No se encontró el carrito'});
+        const userId = req.user._id;
+        const user = await userModel.findById(userId).populate('cart');
+        const cart = user.cart;
+
+        console.log("Cart ID from getCartById:", cart._id);
+        if(cart){
+            res.render('carts/carts', { myCart: cart});
+        }else{
+            res.status(404).send({ error: 'No se encontró el carrito' });
+        }
     }catch(error){
         logger.error(`Error al obtener el carrito ${error}`);
         res.status(500).send({ error: `Error al encontrar el id del carrito ${error}`})
@@ -42,17 +49,21 @@ export const getCartById = async (req, res) => {
 
 export const addProductToCart = async (req, res) =>{
 
-    try{ 
-        const {cid, pid} = req.params;
-        const cartId = cid;
-        const cart = await cartsModel.findById(cartId)
+    try{
+        const {pid, cid} = req.params;
+        console.log('pid:', pid);
+        console.log('cid:', cid);
+        const cart = await cartsModel.findById(cid)
+
+
             if(cart){
-                const productoExistente = cart.products.find(product => product.product === pid);
+                const productoExistente = cart.products.find(product => product.id_prod.equals(pid));
                     if(productoExistente){
                         productoExistente.quantity++
                         }else{
-                            cart.products.push({ product: pid, quantity: 1})
+                            cart.products.push({ id_prod : pid, quantity: 1})
                         }
+                        await cart.save();
 
             logger.info('Productos agregados al carrito')
             res.status(200).send({ respuesta: 'OK', message: cart})

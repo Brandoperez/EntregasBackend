@@ -10,7 +10,7 @@
   <div class="card p-4 shadow">
     <h1 class="text-center mb-4">Agregar Nuevo Producto</h1>
 
-    <form method="post" action="/products">
+    <form id="productForm" method="post" action="/api/products">
       <div class="form-group">
         <label for="title">Título:</label>
         <input type="text" id="title" name="title" class="form-control" required>
@@ -42,7 +42,7 @@
       </div>
 
       <div class="form-group">
-        <label for="thumbnails">Imágenes (separadas por comas):</label>
+        <label for="thumbnails">Imágenes:</label>
         <input type="text" id="thumbnails" name="thumbnails" class="form-control">
       </div>
 
@@ -50,5 +50,26 @@
     </form>
   </div>
 </div>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const successMessage = urlParams.get('successMessage');
+
+           if (successMessage) {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: successMessage,
+            }).then((result) => {
+                if (result.isConfirmed || result.isDismissed) {
+
+                    window.location.href = '/api/products/addProducts';
+                }
+            }); 
+          }
+            document.getElementById('productForm').reset();
+        });
+    </script>
 </body>
 </html>

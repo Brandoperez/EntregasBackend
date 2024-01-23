@@ -14,6 +14,7 @@ import errorHandlers from './middlewares/errors/errorHandlers.js';
 import logger from './utils/logger.js';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express'; 
+import methodOverride from 'method-override'
 
 import {__dirname} from "./path.js";
 import path from 'path';
@@ -61,6 +62,7 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars')
 app.set('views', path.resolve(__dirname, './views'));
 app.use(cookieParser(process.env.SIGNED_COOKIE));
+app.use(methodOverride('_method'));
 app.use(session({
     store: MongoStore.create({
         mongoUrl: process.env.URL_MONGO,

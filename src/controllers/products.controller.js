@@ -27,7 +27,7 @@ export const getProducts = async (req, res) =>{
         }
 
         const prods = await productsModel.paginate(filter, opciones);
-        res.render('home', {
+        res.render('products/home', {
                 products: prods.docs,
                 hasPrevPage: prods.hasPrevPage,
                 hasNetxPage: prods.hasNextPage,
@@ -45,9 +45,11 @@ export const getProductsById = async (req, res) =>{
     const {id} = req.params;
 
     try{
-        const prods = await productsModel.findById(id);
+        const prods = await productsModel.findById(id).lean().exec();
         if(prods){
-            res.status(200).send({ resultado: 'OK', message: prods});
+            prods._id = prods._id.toString();
+            res.render('products/itemDetailProducts', { message: prods });
+            //res.status(200).send({ resultado: 'OK', message: "Producto encontrado", data: prods});
         }else{
             res.status(404).send({ resultado: 'Not found', message: prods});
         }
@@ -65,7 +67,8 @@ export const addProducts = async (req, res) => {
 
         const confirmacion = await productsModel.create({ title, description, price, category, stock, code, thumbnails });
         logger.info('Producto creado con éxito');
-        res.status(200).send({ resultado: 'OK', message: confirmacion});
+        res.redirect('/api/products/addProducts?successMessage=Producto creado con éxito');
+        //res.status(200).send({ resultado: 'OK', message: confirmacion});
     }catch(error){
         logger.error(`Error a crear un nuevo producto`);
         res.status(500).send({ error: `Error al crear el producto ${error}`});
@@ -94,10 +97,11 @@ export const updateProducts = async (req, res ) =>{
 
         validateProductRequired({ title, price, category });
         
-        const confirmacion = productsModel.findByIdAndUpdate(id, {title, description, price, category, stock, code, status});
+        const confirmacion = await productsModel.findByIdAndUpdate(id, {title, description, price, category, stock, code, status}, { lean: true });
             if(confirmacion){
-                logger.info('Producto actualizado')
-                res.status(200).send({ resultado: 'OK', message: 'Producto actualizado'});
+                logger.info('Producto actualizado con exito')
+                res.redirect(`/api/products/editProducts/${id}?successMessage=Producto+actualizado+con+éxito`);
+                //res.status(200).send({ resultado: 'OK', message: 'Producto actualizado'});
             }else{
                 logger.error('No se pudo encontrar el producto')
                 res.status(404).send({ error: `Producto no encontrado ${id}`});
@@ -108,6 +112,20 @@ export const updateProducts = async (req, res ) =>{
     }
 }
 
+export const vistaUpdate = async (req, res) => {
+    try {
+        const product = await productsModel.findById(req.params.id).lean().exec();
+        if (product) {
+            product._id = product._id.toString();
+            res.render('products/editProducts', { message: product });
+        } else {
+            res.render('products/editProducts', { message: null });
+        }
+    } catch (error) {
+        res.render('error', { error: 'Error al obtener el producto' });
+    }
+}
+
 export const deleteProducts = async (req, res) =>{
 
     const {id} = req.params;
@@ -115,7 +133,8 @@ export const deleteProducts = async (req, res) =>{
         const confirmacion = await productsModel.findByIdAndDelete(id);
             if(confirmacion){
                 logger.info('Producto eliminado')
-                res.status(200).send({ resultado: 'OK', message: 'Producto elimando con éxito'});
+                res.redirect(`/api/products/editProducts/${id}?successMessage=Producto+eliminado+con+éxito`);
+                //res.status(200).send({ resultado: 'OK', message: 'Producto elimando con éxito'});
             }else{
                 logger.error('No se pudo encontrar el producto')
                 res.status(404).send({ error: `Producto no encontrado ${id}`});
