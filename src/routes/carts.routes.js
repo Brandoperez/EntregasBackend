@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createCart, getCarts, addProductToCart, getCartById, deleteProductFromCart, deleteCart, updateProductToCart, updateCart, purcharseCart} from "../controllers/carts.controller.js";
+import { createCart, getCarts, addProductToCart, getCartById, deleteProductFromCart, deleteCart, updateProductToCart, updateCart, purcharseCart, vistaCarts} from "../controllers/carts.controller.js";
 import { passportError, authorization } from "../utils/messageErrors.js";
 
 

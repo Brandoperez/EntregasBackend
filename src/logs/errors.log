@@ -278,3 +278,9 @@
 {"level":"error","message":"Failed to lookup view \"cart\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-19T14:25:05.732Z"}
 {"level":"error","message":"Failed to lookup view \"carts/cart\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-19T14:25:36.537Z"}
 {"level":"error","message":"Failed to lookup view \"carts/cart\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-19T14:25:41.553Z"}
+{"level":"error","message":"Failed to lookup view \"myCart\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-23T23:00:41.838Z"}
+{"level":"error","message":"Failed to lookup view \"myCart\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-23T23:01:12.433Z"}
+{"level":"error","message":"Failed to lookup view \"products\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-23T23:13:32.284Z"}
+{"level":"error","message":"Failed to lookup view \"home\" in views directory \"C:\\Users\\brand\\OneDrive\\Escritorio\\EntregasBackend\\src\\views\"","timestamp":"2024-01-23T23:14:04.614Z"}
+{"level":"error","message":"Missing helper: \"cid\"","timestamp":"2024-01-23T23:52:30.449Z"}
+{"level":"error","message":"Missing helper: \"cid\"","timestamp":"2024-01-23T23:54:42.774Z"}

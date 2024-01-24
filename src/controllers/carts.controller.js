@@ -35,9 +35,13 @@ export const getCartById = async (req, res) => {
         const user = await userModel.findById(userId).populate('cart');
         const cart = user.cart;
 
+
         console.log("Cart ID from getCartById:", cart._id);
         if(cart){
-            res.render('carts/carts', { myCart: cart});
+            req.session.cartId = cart._id 
+            console.log("User Session:", req.session);
+            res.render('carts/carts', { myCart: cart.toObject(), userId: userId, cartId: cart._id});
+            logger.info(`Carrito encontrado`)
         }else{
             res.status(404).send({ error: 'No se encontró el carrito' });
         }
@@ -48,15 +52,17 @@ export const getCartById = async (req, res) => {
 }
 
 export const addProductToCart = async (req, res) =>{
-
-    try{
         const {pid, cid} = req.params;
-        console.log('pid:', pid);
-        console.log('cid:', cid);
-        const cart = await cartsModel.findById(cid)
+    try{
+        let cartId = cid === "default" ? null : cid;
+        const cart = await cartsModel.findById(cartId)
 
 
-            if(cart){
+            if(!cart){
+                    const newCart = await cartsModel.create({});
+                    cartId = newCart._id;
+                    logger.info('Nuevo carrito creado');
+
                 const productoExistente = cart.products.find(product => product.id_prod.equals(pid));
                     if(productoExistente){
                         productoExistente.quantity++
@@ -66,6 +72,7 @@ export const addProductToCart = async (req, res) =>{
                         await cart.save();
 
             logger.info('Productos agregados al carrito')
+            console.log("Cart after save:", cart);
             res.status(200).send({ respuesta: 'OK', message: cart})
             }else{
             res.status(404).send({ respuesta: 'Not found', message: 'No se pudo encontrar la tarjeta'});
@@ -223,3 +230,18 @@ export const purcharseCart = async (req, res) => {
             res.status(500).send({ error: `Error al cargar el carrito: ${error}`});
         }
 }
+
+export const vistaCarts = async (req, res) => {
+    try {
+        const userCart = await cartsModel.findById(req.user.cart).populate({
+        path: 'products.id_prod',
+        model: 'products'}).lean()
+    const cartId = req.session.user.cartId
+    res.render('myCart', { myCart: userCart, cartId: cartId});
+    } catch (error) {
+        res.render('error', { error: 'Error al obtener el producto' });
+    }
+}
+
+
+    

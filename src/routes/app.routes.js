@@ -7,6 +7,7 @@ import routerTicket from './tickets.routes.js';
 import routerLogger from './logger.routes.js';
 import routerSession from './sessions.routes.js';
 
+
 const router = Router();
 
 router.use('/api/products', routerProduct);

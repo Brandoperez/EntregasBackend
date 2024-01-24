@@ -23,17 +23,16 @@
               <a href="/api/products/{{_id}}" class="btn btn-primary">Detalles</a>
 
               
-               <form action="/api/cart/{{#if cid}}{{cid}}{{else}}default{{/if}}/products/{{_id}}" method="post">
+               <form method="post" action="/api/carts/{{../cartId}}/products/{{_id}}">
                   <input type="hidden" name="quantity" value="1">
                   <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
                </form>
-               <p>cartId: {{cartId}}</p>
             </div>
           </div>
         </div>
       {{/each}}
 </div>
-<form action="/static/myCart" method="get">
+<form action="/api/carts/:cid" method="get">
 <button id="buttonMyCart" class="btn btn-primary" >ver carrito</button>
 </form>
 

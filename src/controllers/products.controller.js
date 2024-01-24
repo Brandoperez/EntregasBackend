@@ -27,12 +27,15 @@ export const getProducts = async (req, res) =>{
         }
 
         const prods = await productsModel.paginate(filter, opciones);
+        const cartId = req.isAuthenticated() ? req.user.cart : null;
+        console.log("Valor de cartId:", cartId);
         res.render('products/home', {
                 products: prods.docs,
                 hasPrevPage: prods.hasPrevPage,
                 hasNetxPage: prods.hasNextPage,
                 prevPage: prods.prevPage,
-                netxPage: prods.nextPage
+                netxPage: prods.nextPage,
+                cartId: cartId
         })
         //res.status(200).send({ resultado: 'OK', message: prods});
     }catch(error){
